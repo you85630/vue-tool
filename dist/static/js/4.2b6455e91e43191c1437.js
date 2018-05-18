@@ -1,1 +1,0 @@
-webpackJsonp([4],{"4EVg":function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"index"},[this._v("默认页面")])},staticRenderFns:[]};var s=n("VU/8")({},a,!1,function(e){n("adMD")},"data-v-b1ff58f6",null);t.default=s.exports},adMD:function(e,t){}});
