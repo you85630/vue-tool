@@ -58,7 +58,8 @@ export default {
         if (c.match(/[\u4e00-\u9fa5]/)) {
           iTotal++
         }
-        if (!c.match(/[^[A-Za-z]+$]/)) {
+        // eslint-disable-next-line
+        if (!c.match(/[^\x00-\xff]/)) {
           eTotal++
         }
       }
