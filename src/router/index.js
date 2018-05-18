@@ -13,6 +13,10 @@ const index = () =>
   import('components/psges/index')
 const wordCount = () =>
   import('components/psges/word-count')
+const shapesCss = () =>
+  import('components/psges/shapes-css')
+const htmlString = () =>
+  import('components/psges/html-string')
 
 const router = new Router({
   routes: [{
@@ -42,6 +46,16 @@ const router = new Router({
       path: '/home/wordCount',
       name: 'wordCount',
       component: wordCount
+    },
+    {
+      path: '/home/shapesCss',
+      name: 'shapesCss',
+      component: shapesCss
+    },
+    {
+      path: '/home/htmlString',
+      name: 'htmlString',
+      component: htmlString
     }
     ]
   }

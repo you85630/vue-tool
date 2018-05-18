@@ -13,6 +13,12 @@ export default new Vuex.Store({
     leftNav: [{
       name: '字数统计',
       linkto: '/home/wordCount'
+    }, {
+      name: 'Css形状',
+      linkto: '/home/shapesCss'
+    }, {
+      name: 'HTML转JS',
+      linkto: '/home/htmlString'
     }]
   },
   getters: {
