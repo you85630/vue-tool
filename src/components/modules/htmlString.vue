@@ -66,11 +66,11 @@ export default {
   }
   button {
     margin: 20px 0;
-    padding: 10px 20px;
+    padding: 6px 20px;
     border: none;
     background-color: #2d8cf0;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
   }
   .box {
     position: relative;
@@ -84,6 +84,7 @@ export default {
       height: 200px;
       border: none;
       line-height: 1.4;
+      font-size: 14px;
     }
     .copy {
       position: absolute;
@@ -93,7 +94,7 @@ export default {
       border: none;
       background-color: rgba(0, 0, 0, 0.75);
       color: #fff;
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
 
       user-select: none;

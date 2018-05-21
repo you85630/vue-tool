@@ -14,39 +14,39 @@
 import { mapActions } from 'vuex'
 export default {
   methods: {
-    ...mapActions([
-      'exit'
-    ])
+    ...mapActions(['exit'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.top-nav{
+.top-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   padding: 0 20px;
+  width: 100%;
   height: 5%;
   background-color: #fff;
   box-shadow: 0 2px 5px #ccc;
-  a{
-    color: #383E4B;
+  a {
+    color: #383e4b;
   }
-  .logo{
-    a{
+  .logo {
+    a {
       font-size: 26px;
     }
   }
-  ul{
+  ul {
     display: flex;
-    li{
+    li {
       margin-right: 10px;
       padding-right: 10px;
-      border-right: 1px solid #383E4B;
+      border-right: 1px solid #383e4b;
       font-size: 14px;
       cursor: pointer;
-      &:last-child{
+      &:last-child {
         margin-right: 0;
         padding-right: 0;
         border: none;

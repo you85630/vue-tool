@@ -199,25 +199,27 @@ export default {
 
 <style lang="scss" scoped>
 .shapes-css {
+  box-sizing: border-box;
   padding: 0 20px;
+  width: 100%;
 }
 .css-box {
   padding-bottom: 30px;
   h2 {
-    font-size: 16px;
-    background: rgba(0, 0, 0, 0.15);
-    padding: 10px;
     position: relative;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.15);
+    font-size: 16px;
   }
   .style-gap {
     margin: 10px 0;
   }
   .style-box {
     display: block;
-    white-space: pre;
+    padding: 10px;
     background: #333;
     color: white;
-    padding: 10px;
+    white-space: pre;
     dl {
       dt,
       dd {
