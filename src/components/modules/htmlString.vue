@@ -1,6 +1,9 @@
 <template>
   <div class="html-string">
-    <textarea v-model="holder"></textarea>
+   <div class="box">
+     <input type="button" class="copy" value="清空" @click="removeText">
+     <textarea v-model="holder"></textarea>
+    </div>
     <button @click="toString">转换</button>
     <div class="box">
       <textarea v-model="now"></textarea>
@@ -21,24 +24,32 @@ export default {
   },
   methods: {
     toString () {
-      let nowText = this.holder.split('\n')
-      nowText.unshift("'")
-      nowText.push("'")
-      nowText = nowText.toString()
-      nowText = nowText.replace(/,/g, '/\n')
-      this.now = nowText
-      this.copyText = '复制'
+      if (this.holder !== '') {
+        let nowText = this.holder.split('\n')
+
+        nowText.unshift("'")
+        nowText.push("'")
+        nowText = nowText.toString()
+        nowText = nowText.replace(/,/g, '/\n')
+        this.now = nowText
+        this.copyText = '复制'
+      }
     },
     copy (e) {
       this.copyText = '已复制'
       this.now = ''
 
-      var oInput = document.createElement('textarea')
-      oInput.value = e
-      document.body.appendChild(oInput)
-      oInput.select() // 选择对象
-      document.execCommand('Copy') // 执行浏览器复制命令
-      oInput.style.display = 'none'
+      var Otext = document.createElement('textarea')
+      Otext.value = e
+      document.body.appendChild(Otext)
+      Otext.select()
+      document.execCommand('Copy')
+      Otext.style.display = 'none'
+    },
+    removeText () {
+      this.holder = ''
+      this.now = ''
+      this.copyText = '复制'
     }
   }
 }

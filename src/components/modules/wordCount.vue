@@ -1,8 +1,6 @@
 <template>
   <div class="word-count">
-    <div class="title">字数统计 - 字数计算器</div>
     <div class="count-box">
-      <div class="tips">一种方便计算字数，以控制文字数量的小工具</div>
       <div class="text">
         <p class="name">文字输入：</p>
         <div class="textarea">
@@ -78,19 +76,10 @@ export default {
 <style lang="scss" scoped>
 .word-count {
 }
-.title {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
 .count-box {
   display: flex;
   flex-direction: column;
   background-color: #e5f0fb;
-}
-.tips {
-  padding: 10px;
-  text-align: center;
-  font-size: 14px;
 }
 .text {
   display: flex;

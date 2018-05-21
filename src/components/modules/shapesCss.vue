@@ -202,7 +202,6 @@ export default {
   padding: 0 20px;
 }
 .css-box {
-  padding-top: 20px;
   padding-bottom: 30px;
   h2 {
     font-size: 16px;
