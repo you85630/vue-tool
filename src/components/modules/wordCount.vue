@@ -45,7 +45,6 @@ export default {
   methods: {
     changeText (e) {
       // 字符总数
-      let list = e.replace(/ /g, '')
       let iTotal = 0
       let eTotal = 0
       let inum = 0
@@ -64,7 +63,7 @@ export default {
         }
       }
       // 字符总数
-      this.wordCount.allT = list.replace(/[\u0391-\uFFE5]/g, 'aa').length
+      this.wordCount.allT = e.replace(/[\u0391-\uFFE5]/g, 'aa').length
       // 中文
       this.wordCount.cT = iTotal
       // 英文
