@@ -199,9 +199,6 @@ export default {
 
 <style lang="scss" scoped>
 .shapes-css {
-  box-sizing: border-box;
-  padding: 0 20px;
-  width: 100%;
 }
 .css-box {
   padding-bottom: 30px;
@@ -219,7 +216,6 @@ export default {
     padding: 10px;
     background: #333;
     color: white;
-    white-space: pre;
     dl {
       dt,
       dd {
