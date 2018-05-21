@@ -75,8 +75,6 @@ export default {
 
 <style lang="scss" scoped>
 .word-count {
-  box-sizing: border-box;
-  width: 100%;
 }
 .count-box {
   display: flex;
@@ -86,16 +84,14 @@ export default {
 .text {
   display: flex;
   align-items: center;
-  flex-direction: row;
   border-top: 1px solid #fff;
-  white-space: nowrap;
   .name {
+    padding: 0 10px;
     font-size: 14px;
   }
   .textarea {
     padding: 10px;
     width: 100%;
-    border-left: 1px solid #fff;
     textarea {
       box-sizing: border-box;
       padding: 10px;
@@ -108,10 +104,8 @@ export default {
   }
   .show-count {
     padding: 10px;
-    border-left: 1px solid #fff;
     li {
       display: flex;
-      flex-direction: row;
       white-space: normal;
       font-size: 14px;
       p {
