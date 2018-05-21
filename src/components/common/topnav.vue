@@ -1,7 +1,7 @@
 <template>
   <div class="top-nav">
     <div class="logo">
-      <router-link to="/home/index">前端工具</router-link>
+      <router-link to="/home/index">前端工具集</router-link>
     </div>
     <ul>
       <li>You</li>
