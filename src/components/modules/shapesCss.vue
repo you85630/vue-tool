@@ -200,7 +200,6 @@ export default {
 <style lang="scss" scoped>
 .shapes-css {
   padding: 0 20px;
-  font-family: Monaco;
 }
 .css-box {
   padding-top: 20px;

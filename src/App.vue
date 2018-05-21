@@ -12,14 +12,15 @@
 #app {
   height: 100%;
   font-size: 0;
+  font-family: Monaco;
 }
 
 .slide-fade-enter-active {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .slide-fade-leave-active {
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .slide-fade-enter,
