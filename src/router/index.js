@@ -11,12 +11,15 @@ const home = () =>
 
 const index = () =>
   import('components/psges/index')
-const wordCount = () =>
-  import('components/psges/word-count')
+
 const shapesCss = () =>
   import('components/psges/shapes-css')
+const wordCount = () =>
+  import('components/psges/word-count')
 const htmlString = () =>
   import('components/psges/html-string')
+const webColor = () =>
+  import('components/psges/web-color')
 
 const router = new Router({
   routes: [{
@@ -56,6 +59,11 @@ const router = new Router({
       path: '/home/htmlString',
       name: 'htmlString',
       component: htmlString
+    },
+    {
+      path: '/home/webColor',
+      name: 'webColor',
+      component: webColor
     }
     ]
   }

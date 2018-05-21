@@ -19,6 +19,9 @@ export default new Vuex.Store({
     }, {
       name: 'HTML转JS',
       linkto: '/home/htmlString'
+    }, {
+      name: '配色表',
+      linkto: '/home/webColor'
     }]
   },
   getters: {
