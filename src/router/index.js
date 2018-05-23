@@ -20,6 +20,8 @@ const htmlString = () =>
   import('components/psges/html-string')
 const webColor = () =>
   import('components/psges/web-color')
+const flexBox = () =>
+  import('components/psges/flex-box')
 
 const router = new Router({
   routes: [{
@@ -64,6 +66,11 @@ const router = new Router({
       path: '/home/webColor',
       name: 'webColor',
       component: webColor
+    },
+    {
+      path: '/home/flexBox',
+      name: 'flexBox',
+      component: flexBox
     }
     ]
   }

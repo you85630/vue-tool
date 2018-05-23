@@ -599,13 +599,14 @@ export default {
 .web-color {
 }
 .color-list {
+  margin-bottom: 20px;
   .list-title {
     display: inline-block;
     font-size: 18px;
     padding: 10px 20px;
     border-bottom: 3px solid #2d8cf0;
     background-color: #000;
-    color: #fff;
+    color: #2d8cf0;
   }
   .list-intro {
     font-size: 14px;
@@ -615,7 +616,6 @@ export default {
     .box-title {
       font-size: 16px;
       padding: 10px 20px;
-      border-bottom: 3px solid #2d8cf0;
       background-color: #000;
       color: #fff;
     }

@@ -22,6 +22,9 @@ export default new Vuex.Store({
     }, {
       name: '配色表',
       linkto: '/home/webColor'
+    }, {
+      name: 'flexBox演示',
+      linkto: '/home/flexBox'
     }]
   },
   getters: {
