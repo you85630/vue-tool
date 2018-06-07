@@ -12,7 +12,7 @@
         <div class="box-item">
           <div class="item" v-for="(li,index) in flexBox" :key="index">
             <div class="title">{{li.name}}</div>
-            <div @click="activeNow(index,radioList)">
+            <div @click="activeNow(index,radioList-1)">
               <radio-box :list="li.item" v-model="radioList"></radio-box>
             </div>
           </div>
@@ -22,7 +22,7 @@
       <h2>演示</h2>
       <div class="show-box">
         <div class="add">添加</div>
-        <div class="box">
+        <div class="box" :style="flexStyle">
           <div class="li" v-for="li in showbox" :key="li.index"></div>
         </div>
       </div>
@@ -39,7 +39,8 @@ export default {
     return {
       showbox: 5,
       radioList: 1,
-      pwidth: '30',
+      pwidth: 0,
+      styleNow: [],
       flexBox: [
         {
           name: 'flex-direction',
@@ -159,18 +160,23 @@ export default {
     mySlider,
     radioBox
   },
-  methods: {
-    activeNow (key, k) {
-      console.log(key, k)
+  computed: {
+    flexStyle: function () {
+      let list = this.flexBox
+      let select = this.radioList - 1
+      let now = {}
+      for (let i = 0; i < list.length; i++) {
+        let key = list[i].name
+        let val = list[i].item[select].name
+        now[key] = val
+      }
+      return now
     }
   },
-  created () {
-    let list = this.flexBox
-    let key = this.radioList - 1
-    for (let i = 0; i < list.length; i++) {
-      let name = list[i].name
-      const val = list[i].item[key].name
-      console.log(name + ':' + val)
+  methods: {
+    activeNow (r, c) {
+      let nowStyle = this.flexStyle
+      console.log(nowStyle)
     }
   }
 }
@@ -220,11 +226,12 @@ export default {
     font-size: 14px;
   }
   .box{
-    min-width: 100px;
-    height: 100px;
+    display: flex;
     background-color: #fc0;
+    padding: 10px;
     .li{
-      background-color: #fff;
+      margin: 10px;
+      background-color: #ccc;
       width: 50px;
       height: 50px;
     }
