@@ -11,7 +11,7 @@
       <div>
         <h2>属性选择</h2>
           <div class="box-item">
-            <div class="item" v-for="(li,index) in value" :key="index">
+            <div class="item" v-for="(li,index) in flexBox" :key="index">
               <div class="title">{{li.name}}</div>
               <div @click="activeNow(index,col)">
                 <radio-box :list="li.item" v-model="col"></radio-box>
@@ -46,14 +46,149 @@ import mySlider from 'components/common/slider'
 import radioBox from 'components/common/radioBox'
 
 export default {
-  props: ['value'],
   data () {
     return {
       showbox: 5,
       col: 1,
       row: 1,
       pwidth: 20,
-      nowStyle: {}
+      nowStyle: {},
+      flexBox: [
+        {
+          name: 'flex-direction',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'row'
+            },
+            {
+              id: 2,
+              show: false,
+              name: 'row-reverse'
+            },
+            {
+              id: 3,
+              show: false,
+              name: 'column'
+            },
+            {
+              id: 4,
+              show: false,
+              name: 'column-reverse'
+            }
+          ]
+        }, {
+          name: 'flex-wrap',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'nowrap'
+            },
+            {
+              id: 2,
+              show: false,
+              name: 'wrap'
+            },
+            {
+              id: 3,
+              show: false,
+              name: 'wrap-reverse'
+            }
+          ]
+        }, {
+          name: 'justify-content',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'flex-start'
+            },
+            {
+              id: 2,
+              show: false,
+              name: 'flex-end'
+            },
+            {
+              id: 3,
+              show: false,
+              name: 'center'
+            },
+            {
+              id: 4,
+              show: false,
+              name: 'space-between'
+            },
+            {
+              id: 5,
+              show: false,
+              name: 'space-around'
+            }
+          ]
+        }, {
+          name: 'align-items',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'stretch'
+            }, {
+              id: 2,
+              show: false,
+              name: 'flex-start'
+            },
+            {
+              id: 3,
+              show: false,
+              name: 'flex-end'
+            },
+            {
+              id: 4,
+              show: false,
+              name: 'center'
+            },
+            {
+              id: 5,
+              show: false,
+              name: 'baseline'
+            }
+          ]
+        }, {
+          name: 'align-content',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'stretch'
+            }, {
+              id: 2,
+              show: false,
+              name: 'flex-start'
+            },
+            {
+              id: 3,
+              show: false,
+              name: 'flex-end'
+            },
+            {
+              id: 4,
+              show: false,
+              name: 'center'
+            },
+            {
+              id: 5,
+              show: false,
+              name: 'space-between'
+            },
+            {
+              id: 6,
+              show: false,
+              name: 'space-around'
+            }
+          ]
+        }
+      ]
     }
   },
   components: {
@@ -61,7 +196,7 @@ export default {
     radioBox
   },
   created () {
-    let list = this.value
+    let list = this.flexBox
     let row = this.row - 1
     let now = {}
     for (let i = 0; i < list.length; i++) {
@@ -74,7 +209,7 @@ export default {
   methods: {
     // 修改属性
     activeNow (r, c) {
-      let list = this.value
+      let list = this.flexBox
       let row = r
       let col = c - 1
       let key = list[row].name
