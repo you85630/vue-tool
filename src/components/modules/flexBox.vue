@@ -156,6 +156,7 @@ export default {
     padding: 3px;
     min-height: 500px;
     max-height: 1000px;
+    box-sizing: border-box;
     .li{
       display: inline-block;
       position: relative;
