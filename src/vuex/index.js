@@ -23,7 +23,7 @@ export default new Vuex.Store({
       name: '配色表',
       linkto: '/home/webColor'
     }, {
-      name: 'flexBox演示',
+      name: 'flexBox属性',
       linkto: '/home/flexBox'
     }]
   },

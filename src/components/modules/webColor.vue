@@ -626,12 +626,12 @@ export default {
     .box-color {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       .show-box {
         display: flex;
         width: 200px;
         justify-content: space-between;
         margin-bottom: 20px;
+        margin-left: 30px;
         .name {
           width: 60px;
           text-align: center;

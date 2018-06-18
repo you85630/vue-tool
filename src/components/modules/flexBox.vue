@@ -10,10 +10,10 @@
     <div class="flex-box">
       <h2>属性选择</h2>
         <div class="box-item">
-          <div class="item" v-for="(li,index) in flexBox" :key="index">
+          <div class="item" v-for="(li,index) in value" :key="index">
             <div class="title">{{li.name}}</div>
-            <div @click="activeNow(index,radioList-1)">
-              <radio-box :list="li.item" v-model="radioList"></radio-box>
+            <div @click="activeNow(index,col)">
+              <radio-box :list="li.item" v-model="col"></radio-box>
             </div>
           </div>
         </div>
@@ -21,9 +21,11 @@
     <div class="flex-box">
       <h2>演示</h2>
       <div class="show-box">
-        <div class="add">添加</div>
-        <div class="box" :style="flexStyle">
-          <div class="li" v-for="li in showbox" :key="li.index"></div>
+        <div class="add" @click="addLi">添加</div>
+        <div class="box" :style="nowStyle">
+          <div class="li" :style="{width:pwidth+'%'}" v-for="(li,index) in showbox" :key="index">
+            <i class="fa fa-close" @click="removeLi"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -35,148 +37,48 @@ import mySlider from 'components/common/slider'
 import radioBox from 'components/common/radioBox'
 
 export default {
+  props: ['value'],
   data () {
     return {
       showbox: 5,
-      radioList: 1,
-      pwidth: 0,
-      styleNow: [],
-      flexBox: [
-        {
-          name: 'flex-direction',
-          item: [
-            {
-              id: 1,
-              name: 'row'
-            },
-            {
-              id: 2,
-              name: 'row-reverse'
-            },
-            {
-              id: 3,
-              name: 'column'
-            },
-            {
-              id: 4,
-              name: 'column-reverse'
-            }
-          ]
-        }, {
-          name: 'flex-wrap',
-          item: [
-            {
-              id: 1,
-              name: 'nowrap'
-            },
-            {
-              id: 2,
-              name: 'wrap'
-            },
-            {
-              id: 3,
-              name: 'wrap-reverse'
-            }
-          ]
-        }, {
-          name: 'justify-content',
-          item: [
-            {
-              id: 1,
-              name: 'flex-start'
-            },
-            {
-              id: 2,
-              name: 'flex-end'
-            },
-            {
-              id: 3,
-              name: 'center'
-            },
-            {
-              id: 4,
-              name: 'space-between'
-            },
-            {
-              id: 5,
-              name: 'space-around'
-            }
-          ]
-        }, {
-          name: 'align-items',
-          item: [
-            {
-              id: 1,
-              name: 'stretch'
-            }, {
-              id: 2,
-              name: 'flex-start'
-            },
-            {
-              id: 3,
-              name: 'flex-end'
-            },
-            {
-              id: 4,
-              name: 'center'
-            },
-            {
-              id: 5,
-              name: 'baseline'
-            }
-          ]
-        }, {
-          name: 'align-content',
-          item: [
-            {
-              id: 1,
-              name: 'stretch'
-            }, {
-              id: 2,
-              name: 'flex-start'
-            },
-            {
-              id: 3,
-              name: 'flex-end'
-            },
-            {
-              id: 4,
-              name: 'center'
-            },
-            {
-              id: 5,
-              name: 'space-between'
-            },
-            {
-              id: 6,
-              name: 'space-around'
-            }
-          ]
-        }
-      ]
+      col: 1,
+      row: 1,
+      pwidth: 10,
+      nowStyle: {}
     }
   },
   components: {
     mySlider,
     radioBox
   },
-  computed: {
-    flexStyle: function () {
-      let list = this.flexBox
-      let select = this.radioList - 1
-      let now = {}
-      for (let i = 0; i < list.length; i++) {
-        let key = list[i].name
-        let val = list[i].item[select].name
-        now[key] = val
-      }
-      return now
+  created () {
+    let list = this.value
+    let row = this.row - 1
+    let now = {}
+    for (let i = 0; i < list.length; i++) {
+      let key = list[i].name
+      let val = list[i].item[row].name
+      now[key] = val
     }
+    this.nowStyle = now
   },
   methods: {
+    // 修改属性
     activeNow (r, c) {
-      let nowStyle = this.flexStyle
-      console.log(nowStyle)
+      let list = this.value
+      let row = r
+      let col = c - 1
+      let key = list[row].name
+      let val = list[row].item[col].name
+      this.nowStyle[key] = val
+    },
+    // 添加
+    addLi () {
+      this.showbox++
+    },
+    // 删除
+    removeLi () {
+      this.showbox--
     }
   }
 }
@@ -186,6 +88,8 @@ export default {
 .flex {
   h2 {
     font-size: 20px;
+
+    user-select: none;
   }
 }
 .width-box {
@@ -210,8 +114,8 @@ export default {
   .item{
     padding: 20px;
     .title{
-      font-size: 16px;
       font-weight: bold;
+      font-size: 16px;
     }
   }
 }
@@ -224,16 +128,33 @@ export default {
     background-color: #2d8cf0;
     color: #fff;
     font-size: 14px;
+
+    user-select: none;
   }
   .box{
     display: flex;
-    background-color: #fc0;
     padding: 10px;
+    background-color: #fc0;
     .li{
+      position: relative;
       margin: 10px;
-      background-color: #ccc;
       width: 50px;
       height: 50px;
+      background-color: #ccc;
+      &:hover{
+        .fa{
+          display: block;
+        }
+      }
+      .fa{
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        display: none;
+        color: #f00;
+        font-size: 12px;
+        cursor: pointer;
+      }
     }
   }
 }
