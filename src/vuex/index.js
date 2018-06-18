@@ -10,22 +10,27 @@ export default new Vuex.Store({
     // 登录错误提示
     errorMsg: '',
     // 左导航
-    leftNav: [{
-      name: 'Css形状',
-      linkto: '/home/shapesCss'
-    }, {
-      name: '字数统计',
-      linkto: '/home/wordCount'
-    }, {
-      name: 'HTML转JS',
-      linkto: '/home/htmlString'
-    }, {
-      name: '配色表',
-      linkto: '/home/webColor'
-    }, {
-      name: 'flexBox属性',
-      linkto: '/home/flexBox'
-    }]
+    leftNav: [
+      {
+        name: 'Css形状',
+        linkto: '/home/shapesCss'
+      }, {
+        name: '字数统计',
+        linkto: '/home/wordCount'
+      }, {
+        name: 'HTML转JS',
+        linkto: '/home/htmlString'
+      }, {
+        name: '配色表',
+        linkto: '/home/webColor'
+      }, {
+        name: 'flexBox属性',
+        linkto: '/home/flexBox'
+      }, {
+        name: '雪碧图',
+        linkto: '/home/spritePic'
+      }
+    ]
   },
   getters: {
     // 登录
