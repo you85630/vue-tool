@@ -1,14 +1,14 @@
 <template>
   <div class="flex">
     <div class="style-box">
-      <div class="width-box">
+      <div>
         <h2>子元素宽度</h2>
         <div class="box">
           <p class="name">width:{{pwidth}}%</p>
           <my-slider v-model="pwidth"></my-slider>
         </div>
       </div>
-      <div class="flex-box">
+      <div>
         <h2>属性选择</h2>
           <div class="box-item">
             <div class="item" v-for="(li,index) in value" :key="index">
@@ -19,12 +19,14 @@
             </div>
           </div>
       </div>
-      <h2>展示属性：</h2>
-      <div class="style-now">
-        <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
+      <div>
+        <h2>展示属性：</h2>
+        <div class="style-now">
+          <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
+        </div>
       </div>
     </div>
-    <div class="flex-box">
+    <div>
       <h2>演示</h2>
       <div class="show-box">
         <div class="add" @click="addLi">添加</div>
@@ -99,29 +101,27 @@ export default {
     user-select: none;
   }
 }
-.width-box {
-  .box {
-    display: flex;
-    align-items: center;
-    padding: 20px 10px;
-    .name {
-      margin-right: 20px;
-      font-size: 14px;
-    }
+.box {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  .name {
+    margin-right: 20px;
+    font-size: 14px;
   }
 }
+
 .box-item{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  .item{
-    padding: 20px;
-    .title{
-      font-weight: bold;
-      font-size: 16px;
-    }
+  padding: 20px 10px;
+  .title{
+    font-weight: bold;
+    font-size: 16px;
   }
 }
+
 .style-now{
   padding: 20px 0;
   background: #333;
@@ -136,6 +136,7 @@ export default {
     }
   }
 }
+
 .show-box{
   .add{
     display: inline-block;
