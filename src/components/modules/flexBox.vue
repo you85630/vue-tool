@@ -1,22 +1,29 @@
 <template>
   <div class="flex">
-    <div class="width-box">
-      <h2>子元素宽度</h2>
-      <div class="box">
-        <p class="name">width:{{pwidth}}%</p>
-        <my-slider v-model="pwidth"></my-slider>
+    <div class="style-box">
+      <div class="width-box">
+        <h2>子元素宽度</h2>
+        <div class="box">
+          <p class="name">width:{{pwidth}}%</p>
+          <my-slider v-model="pwidth"></my-slider>
+        </div>
       </div>
-    </div>
-    <div class="flex-box">
-      <h2>属性选择</h2>
-        <div class="box-item">
-          <div class="item" v-for="(li,index) in value" :key="index">
-            <div class="title">{{li.name}}</div>
-            <div @click="activeNow(index,col)">
-              <radio-box :list="li.item" v-model="col"></radio-box>
+      <div class="flex-box">
+        <h2>属性选择</h2>
+          <div class="box-item">
+            <div class="item" v-for="(li,index) in value" :key="index">
+              <div class="title">{{li.name}}</div>
+              <div @click="activeNow(index,col)">
+                <radio-box :list="li.item" v-model="col"></radio-box>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
+      <h2>展示属性：</h2>
+      <div class="style-now">
+        <p>width:{{pwidth}}%;</p>
+        <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
+      </div>
     </div>
     <div class="flex-box">
       <h2>演示</h2>
@@ -96,16 +103,12 @@ export default {
   .box {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 20px 10px;
     .name {
       margin-right: 20px;
       font-size: 14px;
     }
   }
-}
-.flex-box {
-  padding-top: 20px;
-  border-top: 1px solid #ccc;
 }
 .box-item{
   display: flex;
@@ -116,6 +119,20 @@ export default {
     .title{
       font-weight: bold;
       font-size: 16px;
+    }
+  }
+}
+.style-now{
+  padding: 20px 0;
+  background: #333;
+  color: white;
+  margin: 20px 0;
+  p {
+    font-size: 14px;
+    line-height: 1.4;
+    padding-left: 20px;
+    span {
+      margin-right: 6px;
     }
   }
 }
