@@ -21,7 +21,6 @@
       </div>
       <h2>展示属性：</h2>
       <div class="style-now">
-        <p>width: {{pwidth}}%;</p>
         <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
       </div>
     </div>
@@ -31,6 +30,7 @@
         <div class="add" @click="addLi">添加</div>
         <div class="box" :style="nowStyle">
           <div class="li" :style="{width:pwidth+'%'}" v-for="(li,index) in showbox" :key="index">
+            <p>{{index+1}}</p>
             <i class="fa fa-close" @click="removeLi"></i>
           </div>
         </div>
@@ -150,27 +150,28 @@ export default {
   }
   .box{
     display: flex;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: #fc0;
+    background: #fc0;
+    overflow: hidden;
+    width: 100%;
+    padding: 3px;
+    min-height: 500px;
+    max-height: 1000px;
     .li{
+      display: inline-block;
       position: relative;
       margin: 10px;
-      width: 50px;
-      height: 50px;
       background-color: #fff;
-      &:hover{
-        .fa{
-          display: block;
-        }
+      p{
+        color: #2d8cf0;
+        font-size: 24px;
+        padding: 10px;
       }
       .fa{
         position: absolute;
-        top: -4px;
-        right: -4px;
-        display: none;
+        top: 10px;
+        right: 10px;
         color: #f00;
-        font-size: 12px;
+        font-size: 24px;
         cursor: pointer;
       }
     }
