@@ -596,8 +596,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.web-color {
-}
 .color-list {
   margin-bottom: 20px;
   .list-title {

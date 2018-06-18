@@ -74,8 +74,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.word-count {
-}
 .count-box {
   display: flex;
   flex-direction: column;
