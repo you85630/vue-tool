@@ -198,8 +198,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.shapes-css {
-}
 .css-box {
   padding-bottom: 30px;
   h2 {
