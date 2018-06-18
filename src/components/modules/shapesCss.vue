@@ -41,8 +41,6 @@ export default {
             width: '100px',
             height: '100px',
             background: 'red',
-            '-moz-border-radius': '50px',
-            '-webkit-border-radius': '50px',
             'border-radius': '50px'
           }
         },
@@ -52,8 +50,6 @@ export default {
             width: '200px',
             height: '100px',
             background: 'red',
-            '-moz-border-radius': '100px/50px',
-            '-webkit-border-radius': '100px/50px',
             'border-radius': '100px/50px'
           }
         },
@@ -148,9 +144,7 @@ export default {
           style: {
             width: '150px',
             height: '100px',
-            '-webkit-transform': 'skew(20deg)',
-            '-moz-transform': 'skew(20deg)',
-            '-o-transform': 'skew(20deg)',
+            transform: 'skew(20deg)',
             background: 'red'
           }
         },
@@ -186,8 +180,6 @@ export default {
             'border-left': '70px solid transparent',
             'border-right': '70px solid transparent',
             'border-top': '100px solid red',
-            '-moz-border-radius': '50%',
-            '-webkit-border-radius': '50%',
             'border-radius': '50%'
           }
         }

@@ -89,7 +89,8 @@ export default {
   }
   .textarea {
     padding: 10px;
-    width: 100%;
+    width: 90%;
+    box-sizing: border-box;
     textarea {
       box-sizing: border-box;
       padding: 10px;
