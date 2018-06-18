@@ -628,7 +628,7 @@ export default {
       flex-wrap: wrap;
       .show-box {
         display: flex;
-        width: 200px;
+        width: 190px;
         justify-content: space-between;
         margin-bottom: 20px;
         margin-left: 30px;

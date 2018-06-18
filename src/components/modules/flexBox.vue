@@ -148,6 +148,7 @@ export default {
     font-size: 14px;
 
     user-select: none;
+    cursor: pointer;
   }
   .box{
     display: flex;
