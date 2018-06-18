@@ -21,7 +21,7 @@
       </div>
       <h2>展示属性：</h2>
       <div class="style-now">
-        <p>width:{{pwidth}}%;</p>
+        <p>width: {{pwidth}}%;</p>
         <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
       </div>
     </div>
