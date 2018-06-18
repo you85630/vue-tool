@@ -43,7 +43,7 @@ export default {
       showbox: 5,
       col: 1,
       row: 1,
-      pwidth: 10,
+      pwidth: 20,
       nowStyle: {}
     }
   },
@@ -134,13 +134,14 @@ export default {
   .box{
     display: flex;
     padding: 10px;
+    box-sizing: border-box;
     background-color: #fc0;
     .li{
       position: relative;
       margin: 10px;
       width: 50px;
       height: 50px;
-      background-color: #ccc;
+      background-color: #fff;
       &:hover{
         .fa{
           display: block;
