@@ -4,7 +4,7 @@
      <input type="button" class="copy" value="清空" @click="removeText">
      <textarea v-model="holder"></textarea>
     </div>
-    <button @click="toString">转换</button>
+    <button @click="toString"><i class="fa fa-refresh"></i>转换</button>
     <div class="box">
       <textarea v-model="now"></textarea>
       <input type="button" class="copy" :value="copyText" @click="copy(now)">
@@ -71,6 +71,9 @@ export default {
     background-color: #2d8cf0;
     color: #fff;
     font-size: 14px;
+    .fa{
+      margin-right: 10px;
+    }
   }
   .box {
     position: relative;
@@ -83,8 +86,8 @@ export default {
       width: 90%;
       height: 200px;
       border: none;
-      line-height: 1.4;
       font-size: 14px;
+      line-height: 1.4;
     }
     .copy {
       position: absolute;

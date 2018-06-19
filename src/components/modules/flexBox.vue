@@ -29,7 +29,7 @@
     <div>
       <h2>演示</h2>
       <div class="show-box">
-        <div class="add" @click="addLi">添加</div>
+        <div class="add" @click="addLi"><i class="fa fa-plus"></i>添加</div>
         <div class="box" :style="nowStyle">
           <div class="li" :style="{width:pwidth+'%'}" v-for="(li,index) in showbox" :key="index">
             <p>{{index+1}}</p>
@@ -258,14 +258,14 @@ export default {
 }
 
 .style-now{
+  margin: 20px 0;
   padding: 20px 0;
   background: #333;
   color: white;
-  margin: 20px 0;
   p {
+    padding-left: 20px;
     font-size: 14px;
     line-height: 1.4;
-    padding-left: 20px;
     span {
       margin-right: 6px;
     }
@@ -281,28 +281,31 @@ export default {
     background-color: #2d8cf0;
     color: #fff;
     font-size: 14px;
+    cursor: pointer;
 
     user-select: none;
-    cursor: pointer;
+    .fa{
+      margin-right: 10px;
+    }
   }
   .box{
     display: flex;
-    background: #fc0;
     overflow: hidden;
-    width: 100%;
+    box-sizing: border-box;
     padding: 3px;
     min-height: 500px;
     max-height: 1000px;
-    box-sizing: border-box;
+    width: 100%;
+    background: #fc0;
     .li{
-      display: inline-block;
       position: relative;
+      display: inline-block;
       margin: 10px;
       background-color: #fff;
       p{
+        padding: 10px;
         color: #2d8cf0;
         font-size: 24px;
-        padding: 10px;
       }
       .fa{
         position: absolute;

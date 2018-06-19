@@ -1,10 +1,13 @@
-<template>
+<template >
   <div class="sprite-pic">
     <div class="left">
-      <div class="btn input-box"><input id="upload" type="file" multiple="multiple"><p>上传</p></div>
+      <div class="btn input-box">
+        <input id="upload" type="file" multiple="multiple">
+        <p><i class="fa fa-cloud-upload"></i>上传</p>
+        <p @click="refresh"><i class="fa fa-refresh"></i>重置</p>
+      </div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
-          <i class="fa fa-close" @click="remove(li.title)"></i>
           <div class="img-box"><img :src="li.pic" alt=""></div>
           <dl>
             <dt><span>.{{li.title}}</span>{</dt>
@@ -17,7 +20,10 @@
       </div>
     </div>
     <div class="right">
-      <div class="btn"><a :href="download" download="css_sprites">下载</a></div>
+      <div class="btn">
+        <a :href="download" download="css_sprites" v-if="download"><i class="fa fa-cloud-download"></i>下载</a>
+        <a v-else><i class="fa fa-cloud-download"></i>下载</a>
+      </div>
       <div class="cover-box" v-if="styleList">
         <img :src="download" v-if="download">
       </div>
@@ -60,18 +66,19 @@ export default {
     }
   },
   mounted () {
-    const uploadInput = document.getElementById('upload')
-    uploadInput.addEventListener('change', event => {
+    window.addEventListener('change', this.changImg)
+  },
+  methods: {
+    changImg (event) {
       const files = Array.from(event.target.files)
-      filesToInstances(files, instances => {
-        drawImages(instances, finalImageUrl => {
+      this.filesToInstances(files, instances => {
+        this.drawImages(instances, finalImageUrl => {
           this.download = finalImageUrl
         })
       })
-    })
-
+    },
     // 根据图片文件拿到图片实例
-    const filesToInstances = (files, callback) => {
+    filesToInstances (files, callback) {
       const length = files.length
       let instances = []
       let finished = 0
@@ -91,10 +98,9 @@ export default {
           }
         }
       })
-    }
-
+    },
     // 拼图
-    const drawImages = (images, callback) => {
+    drawImages (images, callback) {
       const heights = images.map(item => item.height)
       const widths = images.map(item => item.width)
       const canvas = document.createElement('canvas')
@@ -119,12 +125,11 @@ export default {
       })
       this.styleBox = list
       callback(canvas.toDataURL('image/png'))
-    }
-  },
-  methods: {
-    remove (key) {
-      let list = this.styleBox
-      this.styleBox = list.filter(item => item.title !== key)
+    },
+    // 重置
+    refresh () {
+      this.styleBox = []
+      this.download = ''
     }
   }
 }
@@ -136,14 +141,22 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   .btn{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
     margin-bottom: 20px;
-    padding: 6px 20px;
-    background-color: #2d8cf0;
-    color: #fff;
-    font-size: 14px;
-    a{
+    width: 100%;
+    p,a{
       display: block;
+      padding: 6px 20px;
+      background-color: #2d8cf0;
       color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      .fa{
+        margin-right: 10px;
+      }
     }
   }
   .left,
@@ -166,7 +179,7 @@ export default {
         left: 0;
         z-index: 2;
         padding: 6px 0;
-        width: 68px;
+        width: 93px;
         opacity: 0;
         cursor: pointer;
       }
@@ -176,7 +189,6 @@ export default {
       margin-top: -10px;
       width: 100%;
       .box{
-        position: relative;
         display: flex;
         flex-direction: row;
         box-sizing: border-box;
@@ -196,14 +208,6 @@ export default {
             width: 100%;
             height: auto;
           }
-        }
-        .fa{
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          color: #f00;
-          font-size: 14px;
-          cursor: pointer;
         }
         dl {
           margin-left: 10px;
