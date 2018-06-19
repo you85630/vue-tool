@@ -4,10 +4,10 @@
       <div class="btn input-box"><input id="upload" type="file" multiple="multiple"><p>上传</p></div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
-          <i class="fa fa-close"></i>
+          <i class="fa fa-close" @click="remove(li.title)"></i>
           <div class="img-box"><img :src="li.pic" alt=""></div>
           <dl>
-            <dt>{</dt>
+            <dt><span>.{{li.title}}</span>{</dt>
             <dd><span>width:</span>{{li.width}}px;</dd>
             <dd><span>height:</span>{{li.height}}px;</dd>
             <dd><span>background:</span>url('css_sprites.png') no-repeat -10px -{{li.right}}px;</dd>
@@ -30,7 +30,6 @@ export default {
   data () {
     return {
       styleBox: [],
-      imgBox: [],
       download: ''
     }
   },
@@ -82,6 +81,7 @@ export default {
         reader.onload = e => {
           const image = new Image()
           image.src = e.target.result
+          image.name = file.name.replace('.png', '')
           image.onload = () => {
             instances[index] = image
             finished++
@@ -99,24 +99,32 @@ export default {
       const widths = images.map(item => item.width)
       const canvas = document.createElement('canvas')
       const context = canvas.getContext('2d')
-      canvas.height = heights.reduce((total, current) => total + current + 10)
       canvas.width = 400
+      canvas.height = heights.reduce((total, num) => total + (num += 10)) + 20
 
-      let y = 0
-
+      let y = 10
+      let list = []
       images.forEach((item, index) => {
         const width = widths[index]
         const height = heights[index]
-        context.drawImage(item, 0, y, width, height)
-        y += height + 10
-        this.styleBox.push({
+        context.drawImage(item, 10, y, width, height)
+        y += (height + 10)
+        list.push({
           pic: item.src,
+          title: item.name,
           width: width,
           height: height,
           right: y
         })
       })
-      callback(canvas.toDataURL('image/png', 1))
+      this.styleBox = list
+      callback(canvas.toDataURL('image/png'))
+    }
+  },
+  methods: {
+    remove (key) {
+      let list = this.styleBox
+      this.styleBox = list.filter(item => item.title !== key)
     }
   }
 }
@@ -221,9 +229,6 @@ export default {
       flex-direction: column;
       max-width: 100%;
       background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEWgoKD///+BiQigAAAAEUlEQVQI12NgP8CAjH4wICMAfIMIvOGvGm0AAAAASUVORK5CYII=') repeat;
-      img{
-        padding:10px;
-      }
     }
   }
 }
