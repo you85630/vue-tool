@@ -99,7 +99,7 @@ export default {
       const widths = images.map(item => item.width)
       const canvas = document.createElement('canvas')
       const context = canvas.getContext('2d')
-      canvas.height = heights.reduce((total, current) => total + current)
+      canvas.height = heights.reduce((total, current) => total + current + 10)
       canvas.width = 400
 
       let y = 0
@@ -108,7 +108,7 @@ export default {
         const width = widths[index]
         const height = heights[index]
         context.drawImage(item, 0, y, width, height)
-        y += height
+        y += height + 10
         this.styleBox.push({
           pic: item.src,
           width: width,
@@ -116,7 +116,7 @@ export default {
           right: y
         })
       })
-      callback(canvas.toDataURL('image/jpeg', 1))
+      callback(canvas.toDataURL('image/png', 1))
     }
   }
 }
