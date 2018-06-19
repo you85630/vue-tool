@@ -4,6 +4,8 @@
       <div class="btn input-box">
         <input type="file" multiple="multiple">
         <p><i class="fa fa-cloud-upload"></i>上传</p>
+        <span :class="{err:tips}" v-if="tips">{{tips}}</span>
+        <span v-else>支持png,jpg,jpeg,bmp</span>
       </div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
@@ -33,7 +35,8 @@ export default {
   data () {
     return {
       styleBox: [],
-      download: ''
+      download: '',
+      tips: ''
     }
   },
   computed: {
@@ -85,7 +88,19 @@ export default {
         reader.onload = e => {
           const image = new Image()
           image.src = e.target.result
-          image.name = file.name.replace('.png', '')
+
+          if (file.name.indexOf('png') !== -1) {
+            image.name = file.name.replace(/.png/i, '')
+          } else if (file.name.indexOf('bmp') !== -1) {
+            image.name = file.name.replace(/.bmp/i, '')
+          } else if (file.name.indexOf('jpg') !== -1) {
+            image.name = file.name.replace(/.jpg/i, '')
+          } else if (file.name.indexOf('jpeg') !== -1) {
+            image.name = file.name.replace(/.jpeg/i, '')
+          } else {
+            this.tips = '请上传正确格式'
+          }
+
           image.onload = () => {
             instances[index] = image
             finished++
@@ -153,6 +168,12 @@ export default {
       .fa{
         margin-right: 10px;
       }
+    }
+    span{
+      font-size: 12px;
+    }
+    .err{
+      color: #f00;
     }
   }
   .left,
