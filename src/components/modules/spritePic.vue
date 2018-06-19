@@ -23,9 +23,7 @@
         <a :href="download" download="css_sprites" v-if="download"><i class="fa fa-cloud-download"></i>下载</a>
         <a v-else><i class="fa fa-cloud-download"></i>下载</a>
       </div>
-      <div class="cover-box" v-if="styleList">
-        <img :src="download" v-if="download">
-      </div>
+      <img :src="download" v-if="download">
     </div>
   </div>
 </template>
@@ -104,8 +102,7 @@ export default {
       const widths = images.map(item => item.width)
       const canvas = document.createElement('canvas')
       const context = canvas.getContext('2d')
-      canvas.width = 400
-      // canvas.width = widths
+      canvas.width = Math.max.apply(null, widths) + 20
       canvas.height = heights.reduce((total, num) => total + (num += 10)) + 20
 
       let y = 10
@@ -223,9 +220,7 @@ export default {
     }
   }
   .right{
-    .cover-box{
-      display: flex;
-      flex-direction: column;
+    img{
       max-width: 100%;
       background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEWgoKD///+BiQigAAAAEUlEQVQI12NgP8CAjH4wICMAfIMIvOGvGm0AAAAASUVORK5CYII=') repeat;
     }
