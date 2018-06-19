@@ -182,7 +182,7 @@ export default {
     align-items: flex-start;
     flex-direction: column;
     padding: 20px;
-    min-height: 500px;
+    min-height: 620px;
     width: 45%;
     border: 1px solid #ccc;
     border-radius: 4px;

@@ -1,43 +1,39 @@
 <template>
   <div class="flex">
-    <div class="style-box">
-      <div>
-        <h2>子元素宽度</h2>
-        <div class="box">
-          <p class="name">width:{{pwidth}}%</p>
-          <my-slider v-model="pwidth"></my-slider>
-        </div>
-      </div>
-      <div>
+    <h2>子元素宽度</h2>
+    <div class="box">
+      <p class="name">width:{{pwidth}}%</p>
+      <my-slider v-model="pwidth"></my-slider>
+    </div>
+    <ul>
+      <li>
         <h2>属性选择</h2>
-          <div class="box-item">
-            <div class="item" v-for="(li,index) in flexBox" :key="index">
-              <div class="title">{{li.name}}</div>
-              <div @click="activeNow(index,col)">
-                <radio-box :list="li.item" v-model="col"></radio-box>
-              </div>
+        <div class="box-item">
+          <div class="item" v-for="(li,index) in flexBox" :key="index">
+            <div class="title">{{li.name}}</div>
+            <div @click="activeNow(index,col)">
+              <radio-box :list="li.item" v-model="col"></radio-box>
             </div>
           </div>
-      </div>
-      <div>
+        </div>
         <h2>展示属性：</h2>
         <div class="style-now">
           <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
         </div>
-      </div>
-    </div>
-    <div>
-      <h2>演示</h2>
-      <div class="show-box">
-        <div class="add" @click="addLi"><i class="fa fa-plus"></i>添加</div>
-        <div class="box" :style="nowStyle">
-          <div class="li" :style="{width:pwidth+'%'}" v-for="(li,index) in showbox" :key="index">
-            <p>{{index+1}}</p>
-            <i class="fa fa-close" @click="removeLi"></i>
+      </li>
+      <li>
+        <h2>演示</h2>
+        <div class="show-box">
+          <div class="add" @click="addLi"><i class="fa fa-plus"></i>添加</div>
+          <div class="box" :style="nowStyle">
+            <div class="li" :style="{width:pwidth+'%'}" v-for="(li,index) in showbox" :key="index">
+              <p>{{index+1}}</p>
+              <i class="fa fa-close" @click="removeLi"></i>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -55,6 +51,25 @@ export default {
       nowStyle: {},
       flexBox: [
         {
+          name: 'flex-wrap',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'nowrap'
+            },
+            {
+              id: 2,
+              show: false,
+              name: 'wrap'
+            },
+            {
+              id: 3,
+              show: false,
+              name: 'wrap-reverse'
+            }
+          ]
+        }, {
           name: 'flex-direction',
           item: [
             {
@@ -76,25 +91,6 @@ export default {
               id: 4,
               show: false,
               name: 'column-reverse'
-            }
-          ]
-        }, {
-          name: 'flex-wrap',
-          item: [
-            {
-              id: 1,
-              show: false,
-              name: 'nowrap'
-            },
-            {
-              id: 2,
-              show: false,
-              name: 'wrap'
-            },
-            {
-              id: 3,
-              show: false,
-              name: 'wrap-reverse'
             }
           ]
         }, {
@@ -230,7 +226,18 @@ export default {
 
 <style lang="scss" scoped>
 .flex {
+  ul{
+    display: flex;
+    flex-direction: row;
+    li{
+      width: 50%;
+      &:first-child{
+        margin-right: 10px;
+      }
+    }
+  }
   h2 {
+    margin: 20px 0;
     font-size: 20px;
 
     user-select: none;
@@ -239,7 +246,7 @@ export default {
 .box {
   display: flex;
   align-items: center;
-  padding: 20px 10px;
+  padding: 0 10px;
   .name {
     margin-right: 20px;
     font-size: 14px;
@@ -249,8 +256,14 @@ export default {
 .box-item{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 20px 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  .item{
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    margin-right: 20px;
+  }
   .title{
     font-weight: bold;
     font-size: 16px;
@@ -275,7 +288,7 @@ export default {
 .show-box{
   .add{
     display: inline-block;
-    margin: 20px 0;
+    margin-bottom: 20px;
     padding: 6px 20px;
     border: none;
     background-color: #2d8cf0;
@@ -293,24 +306,22 @@ export default {
     overflow: hidden;
     box-sizing: border-box;
     padding: 3px;
-    min-height: 500px;
-    max-height: 1000px;
+    min-height: 474px;
     width: 100%;
     background: #fc0;
     .li{
-      position: relative;
-      display: inline-block;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      box-sizing: border-box;
       margin: 10px;
+      padding: 10px;
       background-color: #fff;
       p{
-        padding: 10px;
         color: #2d8cf0;
         font-size: 24px;
       }
       .fa{
-        position: absolute;
-        top: 10px;
-        right: 10px;
         color: #f00;
         font-size: 24px;
         cursor: pointer;
