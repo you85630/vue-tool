@@ -2,9 +2,8 @@
   <div class="sprite-pic">
     <div class="left">
       <div class="btn input-box">
-        <input id="upload" type="file" multiple="multiple">
+        <input type="file" multiple="multiple">
         <p><i class="fa fa-cloud-upload"></i>上传</p>
-        <p @click="refresh"><i class="fa fa-refresh"></i>重置</p>
       </div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
@@ -106,6 +105,7 @@ export default {
       const canvas = document.createElement('canvas')
       const context = canvas.getContext('2d')
       canvas.width = 400
+      // canvas.width = widths
       canvas.height = heights.reduce((total, num) => total + (num += 10)) + 20
 
       let y = 10
@@ -125,11 +125,6 @@ export default {
       })
       this.styleBox = list
       callback(canvas.toDataURL('image/png'))
-    },
-    // 重置
-    refresh () {
-      this.styleBox = []
-      this.download = ''
     }
   }
 }
