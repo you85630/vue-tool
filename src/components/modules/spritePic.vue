@@ -98,20 +98,24 @@ export default {
     },
     // 拼图
     drawImages (images, callback) {
-      const heights = images.map(item => item.height)
-      const widths = images.map(item => item.width)
+      // 图片之间的间隙
+      let gap = 10
       const canvas = document.createElement('canvas')
       const context = canvas.getContext('2d')
-      canvas.width = Math.max.apply(null, widths) + 20
-      canvas.height = heights.reduce((total, num) => total + (num += 10)) + 20
+      const heights = images.map(item => item.height)
+      const widths = images.map(item => item.width)
+      // 获取宽度
+      canvas.width = Math.max.apply(null, widths) + gap * 2
+      // 获取高度
+      canvas.height = heights.reduce((total, num) => total + (num += gap)) + gap * 2
 
-      let y = 10
+      let y = gap
       let list = []
       images.forEach((item, index) => {
         const width = widths[index]
         const height = heights[index]
-        context.drawImage(item, 10, y, width, height)
-        y += (height + 10)
+        context.drawImage(item, gap, y, width, height)
+        y += (height + gap)
         list.push({
           pic: item.src,
           title: item.name,
