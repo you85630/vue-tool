@@ -1,13 +1,13 @@
 <template>
   <div class="sprite-pic">
     <div class="left">
-      <div class="btn input-box"><input type="file" multiple="multiple" @change="changeImg"><p>上传</p></div>
+      <div class="btn input-box"><input id="upload" type="file" multiple="multiple"><p>上传</p></div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
           <i class="fa fa-close"></i>
           <div class="img-box"><img :src="li.pic" alt=""></div>
           <dl>
-            <dt><span>.{{li.title}}</span>{</dt>
+            <dt>{</dt>
             <dd><span>width:</span>{{li.width}}px;</dd>
             <dd><span>height:</span>{{li.height}}px;</dd>
             <dd><span>background:</span>url('css_sprites.png') no-repeat -10px -{{li.right}}px;</dd>
@@ -17,9 +17,8 @@
       </div>
     </div>
     <div class="right">
-      <div class="btn" @click="downloadNow"><a href="" :download="download">下载</a></div>
+      <div class="btn"><a :href="download" download="css_sprites">下载</a></div>
       <div class="cover-box" v-if="styleList">
-        <canvas id="myCanvas" width="250" height="300"></canvas>
         <img :src="download" v-if="download">
       </div>
     </div>
@@ -30,25 +29,8 @@
 export default {
   data () {
     return {
-      styleBox: [
-        {
-          pic: 'http://img.hb.aicdn.com/9c3d58f4b1f5c513a7bba974563052447d32feb52870-4US9um_fw658',
-          title: 'square',
-          width: 100,
-          height: 40
-
-        }, {
-          pic: 'http://img.hb.aicdn.com/27f19b71900302d39afc3d6158dab2150391207d1312e-BqSBoY_fw658',
-          title: 'square',
-          width: 40,
-          height: 134
-        }, {
-          pic: 'http://img.hb.aicdn.com/27f19b71900302d39afc3d6158dab2150391207d1312e-BqSBoY_fw658',
-          title: 'square',
-          width: 44,
-          height: 86
-        }
-      ],
+      styleBox: [],
+      imgBox: [],
       download: ''
     }
   },
@@ -79,21 +61,62 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(function () {
-
+    const uploadInput = document.getElementById('upload')
+    uploadInput.addEventListener('change', event => {
+      const files = Array.from(event.target.files)
+      filesToInstances(files, instances => {
+        drawImages(instances, finalImageUrl => {
+          this.download = finalImageUrl
+        })
+      })
     })
-  },
-  methods: {
-    changeImg (event) {
-      let list = event.target.files
-      for (let i = 0; i < list.length; i++) {
-        const element = list[i]
-        let url = window.URL.createObjectURL(element)
-        console.log(url)
-      }
-    },
-    downloadNow () {
 
+    // 根据图片文件拿到图片实例
+    const filesToInstances = (files, callback) => {
+      const length = files.length
+      let instances = []
+      let finished = 0
+      files.forEach((file, index) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = e => {
+          const image = new Image()
+          image.src = e.target.result
+          image.onload = () => {
+            instances[index] = image
+            finished++
+            if (finished === length) {
+              callback(instances)
+            }
+          }
+        }
+      })
+    }
+
+    // 拼图
+    const drawImages = (images, callback) => {
+      const heights = images.map(item => item.height)
+      const widths = images.map(item => item.width)
+      const canvas = document.createElement('canvas')
+      const context = canvas.getContext('2d')
+      canvas.height = heights.reduce((total, current) => total + current)
+      canvas.width = 400
+
+      let y = 0
+
+      images.forEach((item, index) => {
+        const width = widths[index]
+        const height = heights[index]
+        context.drawImage(item, 0, y, width, height)
+        y += height
+        this.styleBox.push({
+          pic: item.src,
+          width: width,
+          height: height,
+          right: y
+        })
+      })
+      callback(canvas.toDataURL('image/jpeg', 1))
     }
   }
 }
@@ -199,7 +222,7 @@ export default {
       max-width: 100%;
       background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEWgoKD///+BiQigAAAAEUlEQVQI12NgP8CAjH4wICMAfIMIvOGvGm0AAAAASUVORK5CYII=') repeat;
       img{
-        padding: 5px 10px;
+        padding:10px;
       }
     }
   }
