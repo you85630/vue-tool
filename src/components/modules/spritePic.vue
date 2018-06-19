@@ -1,11 +1,11 @@
 <template>
   <div class="sprite-pic">
     <div class="left">
-      <div class="btn">上传</div>
+      <div class="btn input-box"><input type="file" multiple="multiple" @change="changeImg"><p>上传</p></div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
           <i class="fa fa-close"></i>
-          <img :src="li.pic" alt="" :style="{width:li.width/2+'px',height:li.height/2+'px',maxWidth: '100px',maxHeight: '95px'}">
+          <div class="img-box"><img :src="li.pic" alt=""></div>
           <dl>
             <dt><span>.{{li.title}}</span>{</dt>
             <dd><span>width:</span>{{li.width}}px;</dd>
@@ -17,9 +17,10 @@
       </div>
     </div>
     <div class="right">
-      <div class="btn">下载</div>
+      <div class="btn" @click="downloadNow"><a href="" :download="download">下载</a></div>
       <div class="cover-box" v-if="styleList">
-        <img v-for="(li,index) in styleList" :key="index" :src="li.pic" alt="" :style="{width:li.width+'px',height:li.height+'px'}">
+        <canvas id="myCanvas" width="250" height="300"></canvas>
+        <img :src="download" v-if="download">
       </div>
     </div>
   </div>
@@ -47,33 +48,52 @@ export default {
           width: 44,
           height: 86
         }
-      ]
+      ],
+      download: ''
     }
   },
   computed: {
     styleList: function () {
       let list = this.styleBox
-      let now = []
-      let noeright
+      if (list) {
+        let now = []
+        let noeright
+        for (let i = 0; i < list.length; i++) {
+          const element = list[i]
+          if (i === 0) {
+            noeright = 10
+          } else {
+            noeright += parseInt(list[i - 1].height)
+            noeright += 10
+          }
+          now.push({
+            pic: element.pic,
+            title: element.title,
+            width: element.width,
+            height: element.height,
+            right: noeright
+          })
+        }
+        return now
+      }
+    }
+  },
+  mounted () {
+    this.$nextTick(function () {
+
+    })
+  },
+  methods: {
+    changeImg (event) {
+      let list = event.target.files
       for (let i = 0; i < list.length; i++) {
         const element = list[i]
-        if (i === 0) {
-          noeright = 10
-        } else {
-          noeright += parseInt(list[i - 1].height)
-          noeright += 10
-        }
-        now.push({
-          pic: element.pic,
-          title: element.title,
-          width: element.width,
-          height: element.height,
-          right: noeright
-        })
+        let url = window.URL.createObjectURL(element)
+        console.log(url)
       }
-      console.log(now)
+    },
+    downloadNow () {
 
-      return now
     }
   }
 }
@@ -90,6 +110,10 @@ export default {
     background-color: #2d8cf0;
     color: #fff;
     font-size: 14px;
+    a{
+      display: block;
+      color: #fff;
+    }
   }
   .left,
   .right{
@@ -103,6 +127,19 @@ export default {
     border-radius: 4px;
   }
   .left{
+    .input-box{
+      position: relative;
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        padding: 6px 0;
+        width: 68px;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
     .style-box{
       box-sizing: border-box;
       margin-top: -10px;
@@ -118,6 +155,17 @@ export default {
         border: 1px solid #5277aa;
         border-radius: 3px;
         background-color: #ecf0f6;
+        .img-box{
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          justify-content: center;
+          img{
+            max-width: 100px;
+            width: 100%;
+            height: auto;
+          }
+        }
         .fa{
           position: absolute;
           top: 10px;

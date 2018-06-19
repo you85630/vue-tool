@@ -14,63 +14,71 @@ const htmlString = () => import('components/psges/html-string')
 const webColor = () => import('components/psges/web-color')
 const flexBox = () => import('components/psges/flex-box')
 const spritePic = () => import('components/psges/sprite-pic')
+const demo = () => import('components/psges/demo')
 
 const router = new Router({
-  routes: [{
-    path: '/',
-    redirect: '/home/index'
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
-  },
-  {
-    path: '*',
-    name: 'notfound',
-    component: notfound
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: home,
-    children: [{
-      path: '/home/index',
-      name: 'index',
-      component: index
+  routes: [
+    {
+      path: '/',
+      redirect: '/home/index'
     },
     {
-      path: '/home/wordCount',
-      name: 'wordCount',
-      component: wordCount
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
-      path: '/home/shapesCss',
-      name: 'shapesCss',
-      component: shapesCss
+      path: '*',
+      name: 'notfound',
+      component: notfound
     },
     {
-      path: '/home/htmlString',
-      name: 'htmlString',
-      component: htmlString
-    },
-    {
-      path: '/home/webColor',
-      name: 'webColor',
-      component: webColor
-    },
-    {
-      path: '/home/flexBox',
-      name: 'flexBox',
-      component: flexBox
-    },
-    {
-      path: '/home/spritePic',
-      name: 'spritePic',
-      component: spritePic
+      path: '/home',
+      name: 'home',
+      component: home,
+      children: [
+        {
+          path: '/home/index',
+          name: 'index',
+          component: index
+        },
+        {
+          path: '/home/wordCount',
+          name: 'wordCount',
+          component: wordCount
+        },
+        {
+          path: '/home/shapesCss',
+          name: 'shapesCss',
+          component: shapesCss
+        },
+        {
+          path: '/home/htmlString',
+          name: 'htmlString',
+          component: htmlString
+        },
+        {
+          path: '/home/webColor',
+          name: 'webColor',
+          component: webColor
+        },
+        {
+          path: '/home/flexBox',
+          name: 'flexBox',
+          component: flexBox
+        },
+        {
+          path: '/home/spritePic',
+          name: 'spritePic',
+          component: spritePic
+        },
+        {
+          path: '/home/demo',
+          name: 'demo',
+          component: demo
+        }
+      ]
     }
-    ]
-  }
   ]
 })
 
