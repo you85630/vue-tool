@@ -12,19 +12,19 @@ export default new Vuex.Store({
     // 左导航
     leftNav: [
       {
+        name: 'CSS形状',
+        linkto: '/home/shapesCss'
+      }, {
+        name: '配色表',
+        linkto: '/home/webColor'
+      }, {
         name: '字数统计',
         linkto: '/home/wordCount'
       }, {
         name: 'HTML转JS',
         linkto: '/home/htmlString'
       }, {
-        name: 'Css形状',
-        linkto: '/home/shapesCss'
-      }, {
-        name: '配色表',
-        linkto: '/home/webColor'
-      }, {
-        name: 'flexBox属性',
+        name: 'FlexBox属性',
         linkto: '/home/flexBox'
       }, {
         name: '雪碧图',

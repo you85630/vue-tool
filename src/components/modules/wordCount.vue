@@ -3,13 +3,13 @@
     <div class="count-box">
       <div class="text">
         <p class="name">文字输入：</p>
-        <div class="textarea">
+        <div class="textarea bdl">
           <textarea v-model="wordCount.text"></textarea>
         </div>
       </div>
       <div class="text">
         <p class="name">字数统计：</p>
-        <div class="show-count">
+        <div class="show-count bdl">
           <ul>
             <li>
               <p><span>中文:</span><span class="red">{{wordCount.cT}}</span></p>
@@ -77,18 +77,22 @@ export default {
 .count-box {
   display: flex;
   flex-direction: column;
-  background-color: #e5f0fb;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 .text {
   display: flex;
   align-items: center;
-  border-top: 1px solid #fff;
+  border-top: 1px solid #ccc;
   .name {
     padding: 0 10px;
     font-size: 14px;
   }
-  .textarea {
+  .bdl{
     padding: 10px;
+    border-left: 1px solid #ccc;
+  }
+  .textarea {
     width: 90%;
     box-sizing: border-box;
     textarea {
@@ -102,7 +106,6 @@ export default {
     }
   }
   .show-count {
-    padding: 10px;
     li {
       display: flex;
       white-space: normal;
