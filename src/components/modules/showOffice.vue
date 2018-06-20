@@ -1,10 +1,13 @@
 <template>
   <div class="show-office">
     <div class="title">地址</div>
-    <div class="input-box"><input type="text" placeholder="请输入url地址,内容不可为函中文" v-model="value"></div>
+    <div class="input-box">
+      <input type="text" placeholder="请输入url地址,内容不可为函中文" v-model="value">
+      <button @click="showOffice">展示</button>
+    </div>
 
-    <div class="title">展示</div>
-    <div class="show" v-if="value">
+    <div class="title" v-if="urlData">展示</div>
+    <div class="show" v-if="urlData">
       <iframe :src="urlData" width="100%" height="100%"></iframe>
       <div class="icon-left"></div>
       <div class="icon-right" :style="iconcolor"></div>
@@ -14,15 +17,15 @@
 
 <script>
 export default {
-  props: ['value'],
+  data () {
+    return {
+      value: 'http://palsdm00e.bkt.clouddn.com/111.docx',
+      urlData: ''
+    }
+  },
   computed: {
-    urlData: function () {
-      let now = this.value
-      let url = 'https://view.officeapps.live.com/op/embed.aspx?src='
-      return url + now
-    },
     iconcolor: function () {
-      let now = this.value
+      let now = this.urlData
       let nowcolor
       if (now.indexOf('pptx') !== -1) {
         nowcolor = {
@@ -36,6 +39,13 @@ export default {
         nowcolor = {'background-color': '#fff'}
       }
       return nowcolor
+    }
+  },
+  methods: {
+    showOffice () {
+      let now = this.value
+      let url = 'https://view.officeapps.live.com/op/embed.aspx?src='
+      this.urlData = url + now
     }
   }
 }
@@ -57,8 +67,8 @@ export default {
   font-size: 14px;
   .icon-left{
     position: absolute;
-    left: 0;
     bottom: 0;
+    left: 0;
     width: 80%;
     height: 24px;
   }
@@ -71,12 +81,23 @@ export default {
   }
 }
 .input-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   input{
     box-sizing: border-box;
     padding: 10px;
-    width: 100%;
+    width: 92%;
     border: 1px solid #ccc;
     border-radius: 4px;
+  }
+  button{
+    padding: 6px 20px;
+    border: none;
+    background-color: #2d8cf0;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
   }
 }
 </style>
