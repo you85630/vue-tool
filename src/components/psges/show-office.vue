@@ -13,7 +13,9 @@ export default {
   },
   data () {
     return {
-      showData: 'http://psylife-static.oss-cn-hangzhou.aliyuncs.com/sit/download/123.doc'
+      showData: 'http://palsdm00e.bkt.clouddn.com/111.docx'
+      // showData: 'http://palsdm00e.bkt.clouddn.com/111.xlsx'
+      // showData: 'http://palsdm00e.bkt.clouddn.com/111.pptx'
     }
   }
 }
