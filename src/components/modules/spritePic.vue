@@ -4,8 +4,7 @@
       <div class="btn input-box">
         <input type="file" multiple="multiple">
         <p><i class="fa fa-cloud-upload"></i>上传</p>
-        <span :class="{err:tips}" v-if="tips">{{tips}}</span>
-        <span v-else>支持png,jpg,jpeg,bmp</span>
+        <span>仅支持:png,jpg,jpeg,bmp,请选择正确格式</span>
       </div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
@@ -97,8 +96,6 @@ export default {
             image.name = file.name.replace(/.jpg/i, '')
           } else if (file.name.indexOf('jpeg') !== -1) {
             image.name = file.name.replace(/.jpeg/i, '')
-          } else {
-            this.tips = '请上传正确格式'
           }
 
           image.onload = () => {
@@ -171,9 +168,6 @@ export default {
     }
     span{
       font-size: 12px;
-    }
-    .err{
-      color: #f00;
     }
   }
   .left,
