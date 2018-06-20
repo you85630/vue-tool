@@ -6,8 +6,8 @@
       <button @click="showOffice">展示</button>
     </div>
 
-    <div class="title" v-if="urlData">展示</div>
-    <div class="show" v-if="urlData">
+    <div class="title">展示</div>
+    <div class="show">
       <iframe :src="urlData" width="100%" height="100%"></iframe>
       <div class="icon-left"></div>
       <div class="icon-right" :style="iconcolor"></div>
