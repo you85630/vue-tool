@@ -14,7 +14,7 @@ const htmlString = () => import('components/psges/html-string')
 const webColor = () => import('components/psges/web-color')
 const flexBox = () => import('components/psges/flex-box')
 const spritePic = () => import('components/psges/sprite-pic')
-const demo = () => import('components/psges/demo')
+const showoffice = () => import('components/psges/show-office')
 
 const router = new Router({
   routes: [
@@ -73,9 +73,9 @@ const router = new Router({
           component: spritePic
         },
         {
-          path: '/home/demo',
-          name: 'demo',
-          component: demo
+          path: '/home/showoffice',
+          name: 'showoffice',
+          component: showoffice
         }
       ]
     }

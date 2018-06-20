@@ -30,8 +30,8 @@ export default new Vuex.Store({
         name: '雪碧图',
         linkto: '/home/spritePic'
       }, {
-        name: '演示',
-        linkto: '/home/demo'
+        name: 'office预览',
+        linkto: '/home/showoffice'
       }
     ]
   },
