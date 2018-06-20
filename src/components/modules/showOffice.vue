@@ -9,8 +9,7 @@
     <div class="title">展示</div>
     <div class="show">
       <iframe :src="urlData" width="100%" height="100%"></iframe>
-      <div class="icon-left"></div>
-      <div class="icon-right" :style="iconcolor"></div>
+      <div class="icon-hide"></div>
     </div>
   </div>
 </template>
@@ -21,24 +20,6 @@ export default {
     return {
       value: 'http://palsdm00e.bkt.clouddn.com/111.docx',
       urlData: ''
-    }
-  },
-  computed: {
-    iconcolor: function () {
-      let now = this.urlData
-      let nowcolor
-      if (now.indexOf('pptx') !== -1) {
-        nowcolor = {
-          'right': '1px',
-          'bottom': '1px',
-          'background-color': '#3c3d3e'
-        }
-      } else if (now.indexOf('xlsx') !== -1) {
-        nowcolor = {'background-color': '#3c3d3e'}
-      } else {
-        nowcolor = {'background-color': '#fff'}
-      }
-      return nowcolor
     }
   },
   methods: {
@@ -65,19 +46,13 @@ export default {
   height: 70vh;
   border: 1px solid #ccc;
   font-size: 14px;
-  .icon-left{
+  .icon-hide{
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 80%;
-    height: 24px;
-  }
-  .icon-right{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 12%;
-    height: 21px;
+    width: 100%;
+    height: 22px;
+    background-color: transparent;
   }
 }
 .input-box{
