@@ -1,10 +1,12 @@
 <template>
   <div class="tree">
       <div class="list" v-for="(li,index) in tree" :key="index">
-        <div :class="['lev-'+ li.indent]">
+        <!-- Object -->
+        <div class="lev" v-if="li.typeof==='Object'">
           <span class="key">"{{li.title}}"</span>
           <i @click="li.expanded=!li.expanded" class="fa" :class="[li.expanded ? 'fa-minus-square-o':'fa-plus-square-o']"></i>
-          <span>:</span><span v-if="!li.expanded">{{li.typeof}}</span><span>{</span>
+          <span>:</span><span v-if="!li.expanded">{{li.typeof}}</span>
+          <span>{</span>
           <div class="li" v-for="(i,k,v) in li.name" :key="v" v-if="li.expanded">
             <span class="key">"{{k}}"</span>
             <span>:</span>
@@ -12,8 +14,29 @@
             <span>,</span>
           </div>
           <tree :tree="li.children" v-if="li.expanded"></tree>
-          <span v-else>...</span><span>}</span>
+          <span v-else>...</span>
+          <span>}</span>
         </div>
+        <!-- Array -->
+        <div class="lev" v-if="li.typeof==='Array'">
+          <span class="key">"{{li.title}}"</span>
+          <i @click="li.expanded=!li.expanded" class="fa" :class="[li.expanded ? 'fa-minus-square-o':'fa-plus-square-o']"></i>
+          <span>:</span><span v-if="!li.expanded">{{li.typeof}}</span>
+          <span>[</span>
+          <div class="li" v-for="(i,k,v) in li.name" :key="v" v-if="li.expanded">
+            <span class="val">"{{i}}"</span>
+            <span>,</span>
+          </div>
+          <tree :tree="li.children" v-if="li.expanded"></tree>
+          <span class="key" v-else>{{li.name.length}}</span>
+          <span>]</span>
+        </div>
+        <!-- String -->
+         <div class="lev" v-if="li.typeof==='String'">
+           <span class="key">"{{li.title}}"</span>
+           <span>:</span>
+           <span class="val">"{{li.name}}"</span>
+         </div>
       </div>
   </div>
 </template>
@@ -50,9 +73,7 @@ export default {
     color: #3ab54a;
     font-weight: bold;
   }
-}
-@for $n from 0 through 100 {
-  .lev-#{$n} {
+  .lev{
     margin-left: 20px;
     line-height: 1.6;
   }

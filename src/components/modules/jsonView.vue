@@ -17,7 +17,7 @@
         <div v-if="!err">
           <p>
             <i class="fa" @click="jsonList.expanded=!jsonList.expanded" :class="[jsonList.expanded ? 'fa-minus-square-o':'fa-plus-square-o']"></i>
-            <span v-if="!jsonList.expanded">{{jsonList.now}}</span>
+            <span v-if="!jsonList.expanded">{{jsonList.typeof}}</span>
             <span>{</span>
             <span v-if="!jsonList.expanded">...}</span>
           </p>
@@ -41,106 +41,107 @@ export default {
       value: '',
       err: '',
       jsonList: {
+        typeof: 'Object',
         expanded: true,
-        now: 'Object',
         list: [
           {
+            title: 'pages',
+            typeof: 'String',
+            name: 'pages/home/home'
+          }, {
+            title: 'pages',
+            typeof: 'Array',
+            expanded: true,
+            name: ['pages/home/home', 'pages/home/home']
+          }, {
             title: 'window',
+            typeof: 'Object',
+            expanded: true,
             name: {
               'backgroundTextStyle': 'light',
               'navigationBarBackgroundColor': '#fff',
               'navigationBarTitleText': '发现之路',
               'navigationBarTextStyle': 'black'
             },
-            typeof: 'Object',
-            indent: '1',
-            expanded: true,
             children: [
               {
                 title: 'window',
+                typeof: 'Object',
+                expanded: true,
                 name: {
                   'backgroundTextStyle': 'light',
                   'navigationBarBackgroundColor': '#fff',
                   'navigationBarTitleText': '发现之路',
                   'navigationBarTextStyle': 'black'
                 },
-                typeof: 'Object',
-                indent: '2',
-                expanded: true,
                 children: [
                   {
                     title: 'window',
+                    typeof: 'Object',
+                    expanded: true,
                     name: {
                       'backgroundTextStyle': 'light',
                       'navigationBarBackgroundColor': '#fff',
                       'navigationBarTitleText': '发现之路',
                       'navigationBarTextStyle': 'black'
-                    },
-                    typeof: 'Object',
-                    indent: '3',
-                    expanded: true
+                    }
                   }, {
                     title: 'window',
+                    typeof: 'Object',
+                    expanded: true,
                     name: {
                       'backgroundTextStyle': 'light',
                       'navigationBarBackgroundColor': '#fff',
                       'navigationBarTitleText': '发现之路',
                       'navigationBarTextStyle': 'black'
                     },
-                    typeof: 'Object',
-                    indent: '3',
-                    expanded: true,
                     children: [
                       {
                         title: 'window',
+                        typeof: 'Object',
+                        expanded: true,
                         name: {
                           'backgroundTextStyle': 'light',
                           'navigationBarBackgroundColor': '#fff',
                           'navigationBarTitleText': '发现之路',
                           'navigationBarTextStyle': 'black'
-                        },
-                        typeof: 'Object',
-                        indent: '4',
-                        expanded: true
+                        }
                       }
                     ]
                   }, {
                     title: 'window',
+                    typeof: 'Object',
+                    expanded: true,
                     name: {
                       'backgroundTextStyle': 'light',
                       'navigationBarBackgroundColor': '#fff',
                       'navigationBarTitleText': '发现之路',
                       'navigationBarTextStyle': 'black'
-                    },
-                    typeof: 'Object',
-                    indent: '3',
-                    expanded: true
+                    }
                   }
                 ]
               }, {
                 title: 'window',
+                typeof: 'Object',
+                expanded: true,
                 name: {
                   'backgroundTextStyle': 'light',
                   'navigationBarBackgroundColor': '#fff',
                   'navigationBarTitleText': '发现之路',
                   'navigationBarTextStyle': 'black'
-                },
-                typeof: 'Object',
-                indent: '2',
-                expanded: true
+                }
               }
             ]
           }, {
             title: 'window',
+            typeof: 'Object',
+            expanded: true,
             name: {
               'backgroundTextStyle': 'light',
               'navigationBarBackgroundColor': '#fff',
               'navigationBarTitleText': '发现之路',
               'navigationBarTextStyle': 'black'
-            },
-            typeof: 'Object',
-            indent: '1',
-            expanded: true
+            }
           }
         ]
       }
