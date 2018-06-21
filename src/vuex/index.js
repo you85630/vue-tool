@@ -32,6 +32,9 @@ export default new Vuex.Store({
       }, {
         name: 'office预览',
         linkto: '/home/showoffice'
+      }, {
+        name: 'json解析',
+        linkto: '/home/jsonview'
       }
     ]
   },

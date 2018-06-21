@@ -62,6 +62,7 @@ export default {
     padding: 10px;
     width: 100%;
     height: 200px;
+    font-family: menlo,monospace, Tahoma,"微软雅黑","幼圆";
     line-height: 1.4;
   }
   button {
@@ -87,6 +88,7 @@ export default {
       height: 200px;
       border: none;
       font-size: 14px;
+      font-family: menlo,monospace, Tahoma,"微软雅黑","幼圆";
       line-height: 1.4;
     }
     .copy {
