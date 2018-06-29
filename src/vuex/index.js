@@ -32,6 +32,9 @@ export default new Vuex.Store({
       }, {
         name: 'office预览',
         linkto: '/home/showoffice'
+      }, {
+        name: '上传剪切头像',
+        linkto: '/home/cutcover'
       }
     ]
   },

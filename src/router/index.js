@@ -14,6 +14,7 @@ const webColor = () => import('components/psges/web-color')
 const flexBox = () => import('components/psges/flex-box')
 const spritePic = () => import('components/psges/sprite-pic')
 const showoffice = () => import('components/psges/show-office')
+const cutcover = () => import('components/psges/cut-cover')
 
 const router = new Router({
   routes: [
@@ -75,6 +76,11 @@ const router = new Router({
           path: '/home/showoffice',
           name: 'showoffice',
           component: showoffice
+        },
+        {
+          path: '/home/cutcover',
+          name: 'cutcover',
+          component: cutcover
         }
       ]
     }
