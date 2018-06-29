@@ -6,8 +6,10 @@
 ## vue 开发页面工具
 
 * css 形状
-* 字符统计
-* HTML 转 JS
 * 配色表
+* 字数统计
+* HTML 转 JS
 * flexBox属性
 * 雪碧图
+* office预览
+* 上传剪切头像
