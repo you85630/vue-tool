@@ -4,10 +4,12 @@
       <div class="btn input-box">
         <input type="file"><p><i class="fa fa-cloud-upload"></i>上传头像</p>
       </div>
-      <div class="cut-img">
-        <img class="bg" :src="cover" alt="">
-        <ul class="tracke">
-          <img class="cover" :src="cover" alt="">
+      <div class="cut-img" v-if="cover.img">
+        <img class="bg" :src="cover.img" alt="">
+        <div class="cover" :style="{width:cut.width+'px',height:cut.height+'px',left:cut.left+'px',top:cut.top+'px'}">
+          <img :src="cover.img" :style="{width:cover.width+'px',left: -cut.left+'px',top:-cut.top+'px'}">
+        </div>
+        <ul class="tracke" :style="{width:cut.width+'px',height:cut.height+'px',left:cut.left+'px',top:cut.top+'px'}">
           <li class="border t-l"></li>
           <li class="border t-t"></li>
           <li class="border t-r"></li>
@@ -15,17 +17,17 @@
         </ul>
       </div>
     </div>
-    <div class="right">
+    <div class="right" v-if="cover.img">
       <div class="img-box">
-        <div class="img one"><p :style="{backgroundImage:'url(' + cover + ')'}"></p></div>
+        <div class="img one"><p :style="{backgroundImage:'url(' + cut.img + ')'}"></p></div>
         <div class="text">封面比例（16:9）</div>
       </div>
       <div class="img-box">
-        <div class="img two"><p :style="{backgroundImage:'url(' + cover + ')'}"></p></div>
+        <div class="img two"><p :style="{backgroundImage:'url(' + cut.img + ')'}"></p></div>
         <div class="text">封面比例（2.35:1）</div>
       </div>
       <div class="img-box">
-        <div class="img three"><p :style="{backgroundImage:'url(' + cover + ')'}"></p></div>
+        <div class="img three"><p :style="{backgroundImage:'url(' + cut.img + ')'}"></p></div>
         <div class="text">封面比例（1:1）</div>
       </div>
     </div>
@@ -36,7 +38,44 @@
 export default {
   data () {
     return {
-      cover: 'http://osc94pt0z.bkt.clouddn.com/1.jpeg'
+      cover: {},
+      cut: {
+        // width: 205,
+        // height: 169,
+        // left: 10,
+        // top: 10
+        // img:''
+      }
+    }
+  },
+  mounted () {
+    window.addEventListener('change', this.changImg)
+  },
+  methods: {
+    changImg (e) {
+      const canvas = document.createElement('canvas')
+      const context = canvas.getContext('2d')
+      const reader = new FileReader()
+      const image = new Image()
+      let file = e.target.files[0]
+      let wid = 245
+      if (typeof FileReader !== 'undefined') {
+        reader.onload = (e) => {
+          image.src = e.target.result
+        }
+        reader.readAsDataURL(file)
+
+        image.onload = () => {
+          image.height = (image.height / image.width) * wid
+          image.width = wid
+          this.cover = {
+            img: image.src,
+            width: image.width,
+            height: image.height
+          }
+        }
+        context.drawImage(image, 0, 0, image.width, image.height)
+      }
     }
   }
 }
@@ -67,6 +106,7 @@ export default {
   }
 }
 .left{
+  width: 245px;
   .input-box{
     position: relative;
     input {
@@ -85,25 +125,34 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 245px;
+    width: 100%;
     border: 1px solid #eee;
     background-color: #f5f5f5;
     .bg{
       width: 100%;
-      opacity: .6;
+      opacity: .4;
+    }
+    .cover{
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 138px;
+      img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
     }
     .tracke{
       position: absolute;
       top: 0;
       left: 0;
-      overflow: hidden;
-      width: 245px;
+      width: 100%;
       height: 138px;
       cursor: move;
-      .cover{
-        position: absolute;
-        width: 100%;
-      }
       .border{
         position: absolute;
         background: #fff url('http://osc94pt0z.bkt.clouddn.com/cut-cover.gif') 0 0 repeat;

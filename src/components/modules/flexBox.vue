@@ -51,6 +51,15 @@ export default {
       nowStyle: {},
       flexBox: [
         {
+          name: 'display',
+          item: [
+            {
+              id: 1,
+              show: false,
+              name: 'flex'
+            }
+          ]
+        }, {
           name: 'flex-wrap',
           item: [
             {
