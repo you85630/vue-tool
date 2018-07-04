@@ -311,7 +311,6 @@ export default {
     }
   }
   .box{
-    display: flex;
     overflow: hidden;
     box-sizing: border-box;
     padding: 3px;
