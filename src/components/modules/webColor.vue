@@ -10,7 +10,7 @@
           <div class="box-color">
             <div class="show-box" v-for="(box,index) in i.colors" :key="index">
             <div class="name" v-for="(c,index) in box" :key="index">
-              <div class="c-show" :style="{backgroundColor:c}"></div>
+              <div class="c-show" :style="{backgroundColor:c}" @click="copy(c)"></div>
               <div class="c-name">{{c}}</div>
             </div>
           </div>
@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    <div class="show-alert" v-if="show"><p>已复制颜色</p></div>
   </div>
 </template>
 
@@ -25,6 +26,7 @@
 export default {
   data () {
     return {
+      show: false,
       colorList: [
         {
           title: '按色相的搭配分类',
@@ -591,6 +593,26 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    copy (e) {
+      let Otext = document.createElement('input')
+      Otext.value = e
+      document.body.appendChild(Otext)
+      Otext.select()
+      document.execCommand('Copy')
+      this.show = true
+
+      setTimeout(() => {
+        this.show = false
+      }, 1000)
+
+      Otext.setAttribute('id', 'nid')
+      let cop = document.getElementById('nid')
+      setTimeout(() => {
+        cop.parentNode.removeChild(cop)
+      }, 500)
+    }
   }
 }
 </script>
@@ -644,6 +666,25 @@ export default {
         }
       }
     }
+  }
+}
+.show-alert{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  color: #fff;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  p{
+    background-color: rgba($color: #000000, $alpha: .6);
+    padding: 10px 30px;
+    font-size: 20px;
+    user-select: none;
   }
 }
 </style>

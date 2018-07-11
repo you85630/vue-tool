@@ -38,13 +38,19 @@ export default {
     copy (e) {
       this.copyText = '已复制'
       this.now = ''
-
-      var Otext = document.createElement('textarea')
+      let Otext = document.createElement('textarea')
+      Otext.setAttribute('id', 'cop')
       Otext.value = e
       document.body.appendChild(Otext)
       Otext.select()
       document.execCommand('Copy')
       Otext.style.display = 'none'
+
+      Otext.setAttribute('id', 'nid')
+      let cop = document.getElementById('nid')
+      setTimeout(() => {
+        cop.parentNode.removeChild(cop)
+      }, 500)
     },
     removeText () {
       this.holder = ''

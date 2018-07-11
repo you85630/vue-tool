@@ -1,6 +1,7 @@
 <template>
   <div>
     <cut-cover></cut-cover>
+    <p>未完成，后续补</p>
   </div>
 </template>
 
@@ -14,5 +15,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+p{
+  font-size: 20px;
+  color: #f00;
+}
 </style>
