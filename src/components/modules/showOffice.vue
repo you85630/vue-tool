@@ -42,7 +42,7 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
   width: 100%;
-  height: 60vh;
+  height: 50vh;
   border: 1px solid #ccc;
   font-size: 14px;
   .icon-hide{
@@ -61,7 +61,10 @@ export default {
   input{
     box-sizing: border-box;
     padding: 10px;
+    border:0;
     border: 1px solid #ccc;
+    border-radius: 0;
+    background-color: #fff;
   }
   button{
     margin-top: 10px;
