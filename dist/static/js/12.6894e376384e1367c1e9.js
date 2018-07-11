@@ -1,0 +1,1 @@
+webpackJsonp([12],{KXRa:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a={render:function(){var e=this.$createElement;return(this._self._c||e)("div",{staticClass:"index"},[this._v("默认页面")])},staticRenderFns:[]};var s=n("VU/8")({},a,!1,function(e){n("MenO")},"data-v-c6f67a1a",null);t.default=s.exports},MenO:function(e,t){}});
