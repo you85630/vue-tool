@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <div class="left">
-      <left-nav></left-nav>
-    </div>
-    <div class="right">
+    <div class="top">
       <top-nav></top-nav>
-      <div class="right-main">
+    </div>
+    <div class="main">
+      <div class="left">
+        <left-nav></left-nav>
+      </div>
+      <div class="right">
         <transition name="slide-fade" mode="out-in">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
+          <router-view></router-view>
         </transition>
       </div>
+    </div>
+    <div class="footer">
       <my-footer></my-footer>
     </div>
   </div>
@@ -34,21 +36,35 @@ export default {
 .home {
   display: flex;
   overflow: hidden;
+  flex-direction: column;
+  width: 100%;
   height: 100%;
-  .left{
-    max-width: 300px;
-    width: 20%;
-    background-color: #fff;
+  .top{
+    height: 6%;
   }
-  .right {
-    width: 100%;
-    .right-main{
+  .footer{
+    height: 5%;
+  }
+  .main{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin: 1%;
+    height: 88%;
+    .left{
+      max-width: 300px;
+      width: 20%;
+      height: 100%;
+      border: 1px solid #eee;
+      background-color: #383E4B;
+    }
+    .right {
       overflow-y: auto;
       box-sizing: border-box;
-      margin: 10px;
-      padding: 10px;
-      height: 87.5%;
-      background-color: #fff;
+      margin-left: 10px;
+      width: 80%;
+      height: 100%;
     }
   }
 }

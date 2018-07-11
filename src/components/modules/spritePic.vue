@@ -4,7 +4,6 @@
       <div class="btn input-box">
         <input type="file" multiple="multiple">
         <p><i class="fa fa-cloud-upload"></i>上传</p>
-        <span>仅支持:png,jpg,jpeg,bmp,请选择正确格式</span>
       </div>
       <div class="style-box">
         <div class="box" v-for="(li,index) in styleList" :key="index">
@@ -176,10 +175,9 @@ export default {
     align-items: flex-start;
     flex-direction: column;
     padding: 20px;
-    min-height: 620px;
+    min-height: 70vh;
     width: 45%;
     border: 1px solid #ccc;
-    border-radius: 4px;
   }
   .left{
     .input-box{

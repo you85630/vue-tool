@@ -1,8 +1,6 @@
 <template>
   <div class="footer-nav">
-    <p>
-      &copy;&nbsp;2017&nbsp;-&nbsp;{{year}}
-    </p>
+    <p>&copy;&nbsp;2017&nbsp;-&nbsp;{{year}}</p>
   </div>
 </template>
 
@@ -25,10 +23,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5%;
+  height: 100%;
   background-color: #fff;
-  text-align: center;
   box-shadow: 0 -2px 5px #eee;
+  text-align: center;
   p{
     color: #999;
     font-size: 12px;

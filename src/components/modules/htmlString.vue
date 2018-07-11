@@ -1,13 +1,13 @@
 <template>
   <div class="html-string">
    <div class="box">
-     <input type="button" class="copy" value="清空" @click="removeText">
+     <button class="copy" @click="removeText">清空</button>
      <textarea v-model="holder"></textarea>
     </div>
-    <button @click="toString"><i class="fa fa-refresh"></i>转换</button>
+    <button class="refresh" @click="toString"><i class="fa fa-refresh"></i>转换</button>
     <div class="box">
       <textarea v-model="now"></textarea>
-      <input type="button" class="copy" :value="copyText" @click="copy(now)">
+       <button class="copy" @click="copy(now)">{{copyText}}</button>
     </div>
   </div>
 </template>
@@ -71,7 +71,7 @@ export default {
     font-family: menlo,monospace, Tahoma,"微软雅黑","幼圆";
     line-height: 1.4;
   }
-  button {
+  .refresh {
     margin: 20px 0;
     padding: 6px 20px;
     border: none;
@@ -84,14 +84,13 @@ export default {
   }
   .box {
     position: relative;
+    box-sizing: border-box;
     width: 100%;
     height: 200px;
     border: 1px solid #000;
     textarea {
-      box-sizing: border-box;
-      padding: 10px;
       width: 90%;
-      height: 200px;
+      height: 100%;
       border: none;
       font-size: 14px;
       font-family: menlo,monospace, Tahoma,"微软雅黑","幼圆";
@@ -103,6 +102,7 @@ export default {
       right: 0;
       padding: 4px 20px;
       border: none;
+      border-radius: 0;
       background-color: rgba(0, 0, 0, 0.75);
       color: #fff;
       font-size: 14px;

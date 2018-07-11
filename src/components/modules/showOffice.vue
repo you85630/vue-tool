@@ -41,9 +41,8 @@ export default {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  margin-left: -1px;
   width: 100%;
-  height: 70vh;
+  height: 60vh;
   border: 1px solid #ccc;
   font-size: 14px;
   .icon-hide{
@@ -57,18 +56,19 @@ export default {
 }
 .input-box{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   input{
     box-sizing: border-box;
     padding: 10px;
-    width: 92%;
     border: 1px solid #ccc;
-    border-radius: 4px;
   }
   button{
-    padding: 6px 20px;
+    margin-top: 10px;
+    padding: 6px 0;
+    width: 100px;
     border: none;
+    border-radius: 0;
     background-color: #2d8cf0;
     color: #fff;
     font-size: 14px;

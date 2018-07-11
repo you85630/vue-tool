@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <transition name="slide-fade" mode="out-in">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -11,6 +9,7 @@
 <style lang="scss" scoped>
 #app {
   height: 100%;
+  background-color: #fff;
   font-size: 0;
   font-family: Monaco;
 }

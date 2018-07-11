@@ -599,6 +599,7 @@ export default {
       let Otext = document.createElement('input')
       Otext.value = e
       document.body.appendChild(Otext)
+      Otext.style.display = 'none'
       Otext.select()
       document.execCommand('Copy')
       this.show = true
@@ -622,36 +623,36 @@ export default {
   margin-bottom: 20px;
   .list-title {
     display: inline-block;
-    font-size: 18px;
     padding: 10px 20px;
     border-bottom: 3px solid #2d8cf0;
     background-color: #000;
     color: #2d8cf0;
+    font-size: 18px;
   }
   .list-intro {
-    font-size: 14px;
     margin: 20px 0;
+    font-size: 14px;
   }
   .box {
     .box-title {
-      font-size: 16px;
       padding: 10px 20px;
       background-color: #000;
       color: #fff;
+      font-size: 16px;
     }
     .box-desc {
-      font-size: 14px;
       margin: 10px 0;
+      font-size: 14px;
     }
     .box-color {
       display: flex;
       flex-wrap: wrap;
       .show-box {
         display: flex;
-        width: 190px;
         justify-content: space-between;
         margin-bottom: 20px;
         margin-left: 30px;
+        width: 190px;
         .name {
           width: 60px;
           text-align: center;
@@ -670,20 +671,21 @@ export default {
 }
 .show-alert{
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   z-index: 2;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  color: #fff;
   p{
-    background-color: rgba($color: #000000, $alpha: .6);
     padding: 10px 30px;
+    background-color: rgba($color: #000000, $alpha: .6);
     font-size: 20px;
+
     user-select: none;
   }
 }

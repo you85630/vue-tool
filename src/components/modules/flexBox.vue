@@ -1,11 +1,12 @@
 <template>
   <div class="flex">
-    <h2>子元素宽度</h2>
-    <div class="box">
-      <p class="name">width:{{pwidth}}%</p>
-      <my-slider v-model="pwidth"></my-slider>
-    </div>
     <ul>
+      <li>
+        <div class="headline">子元素宽度<p class="title">width:{{pwidth}}%</p></div>
+        <div class="box-item">
+          <my-slider v-model="pwidth"></my-slider>
+        </div>
+      </li>
       <li>
         <h2>属性选择</h2>
         <div class="box-item">
@@ -16,21 +17,22 @@
             </div>
           </div>
         </div>
-        <h2>展示属性：</h2>
-        <div class="style-now">
-          <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
-        </div>
       </li>
       <li>
-        <h2>演示</h2>
+        <div class="headline">演示<div class="add" @click="addLi"><i class="fa fa-plus"></i>添加</div></div>
         <div class="show-box">
-          <div class="add" @click="addLi"><i class="fa fa-plus"></i>添加</div>
           <div class="box" :style="nowStyle">
             <div class="li" :style="{width:pwidth+'%'}" v-for="(li,index) in showbox" :key="index">
               <p>{{index+1}}</p>
               <i class="fa fa-close" @click="removeLi"></i>
             </div>
           </div>
+        </div>
+      </li>
+      <li>
+        <div class="headline">展示属性：</div>
+        <div class="style-now">
+          <p v-for="(i,val) in nowStyle" :key="val"><span>{{val}}:</span>{{i}};</p>
         </div>
       </li>
     </ul>
@@ -237,28 +239,33 @@ export default {
 .flex {
   ul{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     li{
-      width: 50%;
-      &:first-child{
+      padding-bottom: 10px;
+    }
+  }
+  .headline {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+
+    user-select: none;
+    .add{
+      padding: 6px 20px;
+      border: none;
+      background-color: #2d8cf0;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+
+      user-select: none;
+      .fa{
         margin-right: 10px;
       }
     }
-  }
-  h2 {
-    margin: 20px 0;
-    font-size: 20px;
-
-    user-select: none;
-  }
-}
-.box {
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  .name {
-    margin-right: 20px;
-    font-size: 14px;
   }
 }
 
@@ -271,16 +278,18 @@ export default {
     flex-direction:row;
     flex-wrap:wrap;
     justify-content:space-between;
-    margin-right: 20px;
+    margin-left: 20px;
+    &:first-child{
+      margin-left: 0;
+    }
   }
   .title{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 .style-now{
-  margin: 20px 0;
   padding: 20px 0;
   background: #333;
   color: white;
@@ -295,26 +304,10 @@ export default {
 }
 
 .show-box{
-  .add{
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 6px 20px;
-    border: none;
-    background-color: #2d8cf0;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-
-    user-select: none;
-    .fa{
-      margin-right: 10px;
-    }
-  }
   .box{
     overflow: hidden;
     box-sizing: border-box;
-    padding: 3px;
-    min-height: 474px;
+    min-height: 300px;
     width: 100%;
     background: #fc0;
     .li{

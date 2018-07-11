@@ -199,7 +199,7 @@ export default {
     font-size: 16px;
   }
   .style-gap {
-    margin: 10px 0;
+    margin: 20px;
   }
   .style-box {
     display: block;

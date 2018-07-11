@@ -1,26 +1,26 @@
 <template>
   <div class="word-count">
-    <div class="count-box">
-      <div class="text">
-        <p class="name">文字输入：</p>
-        <div class="textarea bdl">
+    <table>
+      <tr>
+        <td><p>文字输入：</p></td>
+        <td>
           <textarea v-model="wordCount.text"></textarea>
-        </div>
-      </div>
-      <div class="text">
-        <p class="name">字数统计：</p>
-        <div class="show-count bdl">
-          <ul>
-            <li>
-              <p><span>中文:</span><span class="red">{{wordCount.cT}}</span></p>
-              <p><span>英文:</span><span class="red">{{wordCount.eT}}</span></p>
-              <p><span>数字:</span><span class="red">{{wordCount.nT}}</span></p>
-            </li>
-            <li>字符总数：共记<span class="red">{{wordCount.allT}}</span>个字符 (汉字算两个字符，数字、空格、英文字母算做一个字符)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
+      <tr>
+        <td><p>字数统计：</p></td>
+        <td>
+            <ul>
+              <li>
+                <p><span>中文:</span><span class="red">{{wordCount.cT}}</span></p>
+                <p><span>英文:</span><span class="red">{{wordCount.eT}}</span></p>
+                <p><span>数字:</span><span class="red">{{wordCount.nT}}</span></p>
+              </li>
+              <li><p>字符总数：共记<span class="red">{{wordCount.allT}}</span>个字符 (汉字算两个字符，数字、空格、英文字母算做一个字符)</p></li>
+            </ul>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -74,49 +74,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.count-box {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-.text {
-  display: flex;
-  align-items: center;
-  border-top: 1px solid #ccc;
-  .name {
-    padding: 0 10px;
-    font-size: 14px;
-  }
-  .bdl{
-    padding: 10px;
-    border-left: 1px solid #ccc;
-  }
-  .textarea {
-    width: 90%;
-    box-sizing: border-box;
-    textarea {
-      box-sizing: border-box;
-      padding: 10px;
-      width: 100%;
-      height: 100px;
-      border: none;
-      background-color: #fff;
-      line-height: 1.4;
-    }
-  }
-  .show-count {
-    li {
-      display: flex;
-      white-space: normal;
-      font-size: 14px;
-      p {
-        margin-right: 20px;
-        margin-bottom: 10px;
-      }
-      .red {
-        margin: 0 4px;
-        color: #f00;
+.word-count{
+  table{
+    tr{
+      border: 1px solid #eee;
+      td{
+        padding: 10px;
+        border-right: 1px solid #eee;
+        p{
+          font-size: 14px;
+        }
+        .red{
+          color: #f00;
+        }
+        textarea{
+          width: 100%;
+          height: 100px;
+          border: none;
+          background-color: #fff;
+          line-height: 1.4;
+        }
+        ul{
+          li{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            line-height: 1.4;
+            p{
+              margin-right: 10px;
+            }
+          }
+        }
       }
     }
   }

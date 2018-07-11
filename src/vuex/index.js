@@ -12,28 +12,28 @@ export default new Vuex.Store({
     // 左导航
     leftNav: [
       {
-        name: 'CSS形状',
+        label: 'CSS形状',
         linkto: '/home/shapesCss'
       }, {
-        name: '配色表',
+        label: '配色表',
         linkto: '/home/webColor'
       }, {
-        name: '字数统计',
+        label: '字数统计',
         linkto: '/home/wordCount'
       }, {
-        name: 'HTML转JS',
+        label: 'HTML转JS',
         linkto: '/home/htmlString'
       }, {
-        name: 'FlexBox属性',
+        label: 'FlexBox属性',
         linkto: '/home/flexBox'
       }, {
-        name: '雪碧图',
+        label: '雪碧图',
         linkto: '/home/spritePic'
       }, {
-        name: 'office预览',
+        label: 'office预览',
         linkto: '/home/showoffice'
       }, {
-        name: '上传剪切头像',
+        label: '上传剪切头像',
         linkto: '/home/cutcover'
       }
     ]

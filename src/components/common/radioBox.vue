@@ -28,7 +28,7 @@ export default {
 .radio-box{
   p{
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
 
     user-select: none;

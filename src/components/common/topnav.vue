@@ -20,36 +20,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.top-nav {
+.top-nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   padding: 0 20px;
-  width: 100%;
-  height: 5%;
+  height: 100%;
   background-color: #fff;
   box-shadow: 0 2px 5px #ccc;
-  a {
-    color: #383e4b;
-  }
-  .logo {
-    a {
-      font-size: 26px;
-    }
-  }
-  ul {
+  .logo{
     display: flex;
-    li {
-      margin-right: 10px;
-      padding-right: 10px;
-      border-right: 1px solid #383e4b;
+    align-items: center;
+    flex-direction: row;
+    max-width: 300px;
+    color: #666;
+    font-size: 20px;
+  }
+  ul{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin-left: 20px;
+    li{
+      display: flex;
+      flex-direction: row;
       font-size: 14px;
-      cursor: pointer;
-      &:last-child {
-        margin-right: 0;
-        padding-right: 0;
-        border: none;
+      &:last-child{
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid #ccc;
       }
     }
   }
