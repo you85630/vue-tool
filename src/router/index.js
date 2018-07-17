@@ -15,6 +15,7 @@ const flexBox = () => import('components/pages/flex-box')
 const spritePic = () => import('components/pages/sprite-pic')
 const showoffice = () => import('components/pages/show-office')
 const cutcover = () => import('components/pages/cut-cover')
+const move = () => import('components/pages/move')
 
 const router = new Router({
   routes: [
@@ -81,6 +82,11 @@ const router = new Router({
           path: '/home/cutcover',
           name: 'cutcover',
           component: cutcover
+        },
+        {
+          path: '/home/move',
+          name: 'move',
+          component: move
         }
       ]
     }
