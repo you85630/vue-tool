@@ -1,7 +1,6 @@
 # vue-tool
 
 > A Vue.js project
-> 没做 H5 兼容，没做 H5 兼容，呵呵呵
 
 ## vue 开发页面工具
 

@@ -14,7 +14,6 @@ const webColor = () => import('components/pages/web-color')
 const flexBox = () => import('components/pages/flex-box')
 const spritePic = () => import('components/pages/sprite-pic')
 const showoffice = () => import('components/pages/show-office')
-const cutcover = () => import('components/pages/cut-cover')
 const move = () => import('components/pages/move')
 
 const router = new Router({
@@ -77,11 +76,6 @@ const router = new Router({
           path: '/home/showoffice',
           name: 'showoffice',
           component: showoffice
-        },
-        {
-          path: '/home/cutcover',
-          name: 'cutcover',
-          component: cutcover
         },
         {
           path: '/home/move',

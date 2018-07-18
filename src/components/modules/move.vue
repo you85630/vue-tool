@@ -60,10 +60,22 @@ export default {
 .img-box{
   display: flex;
   flex-direction: row;
+  li{
+    &:last-child{
+      img{
+        margin-right: 0;
+      }
+    }
+  }
 }
 .box{
-  width: 750px;
+  width: 740px;
   height: 200px;
   border: 1px solid #000;
+  img{
+    &:last-child{
+      margin-right: 0;
+    }
+  }
 }
 </style>
