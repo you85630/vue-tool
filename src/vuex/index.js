@@ -33,8 +33,8 @@ export default new Vuex.Store({
         label: 'office预览',
         linkto: '/home/showoffice'
       }, {
-        label: '上传剪切头像',
-        linkto: '/home/cutcover'
+        label: '网页转PDF',
+        linkto: '/home/htmlpdf'
       }, {
         label: '拖动',
         linkto: '/home/move'
