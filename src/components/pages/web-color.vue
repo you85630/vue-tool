@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import webColor from '../modules/webColor'
+import webColor from 'components/modules/webColor'
 export default {
   components: {
     webColor
