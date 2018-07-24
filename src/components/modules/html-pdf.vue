@@ -23,27 +23,24 @@ export default{
   },
   methods: {
     getPdf () {
-      let maig = 10
-      let imgw = 210 - 2 * maig
-      let imgh = 297 - 2 * maig
       html2Canvas(document.querySelector('#pdfDom'), {allowTaint: true}).then((pages) => {
         let contentWidth = pages.width
         let contentHeight = pages.height
-        let pageHeight = contentWidth / imgw * imgh
-        let leftHeight = contentHeight
-        let position = maig
-        let imgWidth = imgw
-        let imgHeight = imgw / contentWidth * contentHeight
+        let pageHeight = contentWidth / 210 * 297
+        let nowHeight = contentHeight
+        let position = 10
+        let imgWidth = 210 - 2 * 10
+        let imgHeight = (imgWidth / contentWidth * contentHeight) - 2 * 10
         let pageData = pages.toDataURL('image/jpeg', 1.0)
         let PDF = new JsPDF('', 'mm', 'a4')
-        if (leftHeight < pageHeight) {
-          PDF.addImage(pageData, 'JPEG', maig, maig, imgWidth, imgHeight)
+        if (nowHeight < pageHeight) {
+          PDF.addImage(pageData, 'JPEG', 10, 10, imgWidth, imgHeight)
         } else {
-          while (leftHeight > 0) {
-            PDF.addImage(pageData, 'JPEG', maig, position, imgWidth, imgHeight)
-            leftHeight -= pageHeight
+          while (nowHeight > 0) {
+            PDF.addImage(pageData, 'JPEG', 10, position, imgWidth, imgHeight)
+            nowHeight -= pageHeight
             position -= 297
-            if (leftHeight > 0) {
+            if (nowHeight > 0) {
               PDF.addPage()
             }
           }
